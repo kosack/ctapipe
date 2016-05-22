@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Code Guidelines &mdash; ctapipe v0.0.dev388</title>
+  <title>Code Guidelines &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
         <link rel="up" title="Development Resources" href="index.html"/>
         <link rel="next" title="Support Libraries" href="support-libraries.html"/>
         <link rel="prev" title="Style Guide" href="style-guide.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -85,10 +85,11 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Development Resources</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Code Guidelines</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#useful-references-for-good-coding-practices">Useful references for good coding practices:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-structures">Data Structures</a></li>
 </ul>
 </li>
@@ -130,7 +131,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -156,8 +157,17 @@
             
   <div class="section" id="code-guidelines">
 <h1>Code Guidelines<a class="headerlink" href="#code-guidelines" title="Permalink to this headline">¶</a></h1>
+<p>Coding should follow the CTA coding guidelines when possible (those
+are defined in a separate document form the SYS group)</p>
 <p>Here, we list useful guidelines for the logical structure of code (see
 also the style-guide for code style)</p>
+<div class="section" id="useful-references-for-good-coding-practices">
+<h2>Useful references for good coding practices:<a class="headerlink" href="#useful-references-for-good-coding-practices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://swcarpentry.github.io/slideshows/best-practices/index.html">http://swcarpentry.github.io/slideshows/best-practices/index.html</a></li>
+<li><a class="reference external" href="http://arxiv.org/abs/1210.0530">http://arxiv.org/abs/1210.0530</a></li>
+</ul>
+</div>
 <div class="section" id="data-structures">
 <h2>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
 <p>Python is very flexible with data structures: data can be in classes,
@@ -169,19 +179,14 @@ basic guidelines:</p>
 <li>basic array-like data should be in an <code class="xref py py-obj docutils literal"><span class="pre">numpy.NDArray</span></code>, with a suitable
 <code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code> (fixed data type)</li>
 <li>for complex sets of arrays, each with a column name and unit, can be
-managed via an <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.1.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Table</span></code></a> object (which also provides
+managed via an <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.1.2)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Table</span></code></a> object (which also provides
 methods to read and write such a table to/from nearly any file
-format, including FITS and HDF5)</li>
+format, including FITS and HDF5). Other packages like <code class="xref py py-obj docutils literal"><span class="pre">pandas</span></code> or
+<code class="xref py py-obj docutils literal"><span class="pre">dask</span></code> may be explored.</li>
 <li><a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> s or classes can be used for more flexible containers</li>
-<li>for cases where we need to have a data structure with a well-defined
-fixed set of attributes, a <a class="reference external" href="http://docs.python.org/library/collections.html#collections.namedtuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">collections.namedtuple</span></code></a> should be used
-to define the structure.  Namedtuples are like a _struct_ in
-C/C++: they must have all attributes filled in, attributes cannot be
-added or removed, and the names are fixed.  Unlike C/C++ structs,
-namedtuples are _immutable_, meaning their data cannot be changed
-after they are constructed.</li>
-<li>Classes don&#8217;t need to sub-class <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">object</span></code></a>, because we only support Python 3
-and new-style classes are the default, i.e. subclassing <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">object</span></code></a> is superfluous.</li>
+<li>Classes don&#8217;t need to sub-class <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">object</span></code></a>, because we only support
+Python 3 and new-style classes are the default, i.e. subclassing
+<a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">object</span></code></a> is superfluous.</li>
 </ul>
 </div>
 </div>
@@ -206,7 +211,7 @@ and new-style classes are the default, i.e. subclassing <a class="reference exte
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -228,7 +233,7 @@ and new-style classes are the default, i.e. subclassing <a class="reference exte
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

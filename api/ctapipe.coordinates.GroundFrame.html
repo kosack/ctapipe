@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GroundFrame &mdash; ctapipe v0.0.dev388</title>
+  <title>GroundFrame &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
         <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
-        <link rel="next" title="TelescopeFrame" href="ctapipe.coordinates.TelescopeFrame.html"/>
+        <link rel="next" title="NominalFrame" href="ctapipe.coordinates.NominalFrame.html"/>
         <link rel="prev" title="CameraFrame" href="ctapipe.coordinates.CameraFrame.html"/> 
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -85,7 +85,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../coordinates/index.html#module-ctapipe.coordinates">ctapipe.coordinates Package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../coordinates/index.html#functions">Functions</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="../coordinates/index.html#classes">Classes</a></li>
 </ul>
 </li>
@@ -131,7 +132,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -161,7 +162,13 @@
 <dt id="ctapipe.coordinates.GroundFrame">
 <em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">GroundFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#GroundFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.GroundFrame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
-<p>Ground coordinate frame.</p>
+<p>Ground coordinate frame.
+The ground coordinate frame is a simple cartesian frame describing
+the 3 dimensional position of objects compared to the array ground level
+in relation to the nomial centre of the array.
+Typically this frame will be used for describing the position on telescopes
+and equipment</p>
+<p>Frame attributes: None</p>
 <p class="rubric">Attributes Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -181,7 +188,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#ctapipe.coordinates.GroundFrame.name" title="ctapipe.coordinates.GroundFrame.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.GroundFrame.observatory_location" title="ctapipe.coordinates.GroundFrame.observatory_location"><code class="xref py py-obj docutils literal"><span class="pre">observatory_location</span></code></a></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">GroundFrame.observatory_location</span></code></td>
 <td></td>
 </tr>
 </tbody>
@@ -194,7 +201,7 @@
 
 <dl class="attribute">
 <dt id="ctapipe.coordinates.GroundFrame.frame_attributes">
-<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('observatory_location', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x11166ad30&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.GroundFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('pointing_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x113169b00&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.GroundFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -205,11 +212,6 @@
 <dl class="attribute">
 <dt id="ctapipe.coordinates.GroundFrame.name">
 <code class="descname">name</code><em class="property"> = 'groundframe'</em><a class="headerlink" href="#ctapipe.coordinates.GroundFrame.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ctapipe.coordinates.GroundFrame.observatory_location">
-<code class="descname">observatory_location</code><em class="property"> = None</em><a class="headerlink" href="#ctapipe.coordinates.GroundFrame.observatory_location" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -223,7 +225,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.coordinates.TelescopeFrame.html" class="btn btn-neutral float-right" title="TelescopeFrame" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.coordinates.NominalFrame.html" class="btn btn-neutral float-right" title="NominalFrame" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ctapipe.coordinates.CameraFrame.html" class="btn btn-neutral" title="CameraFrame" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -236,7 +238,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -258,7 +260,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

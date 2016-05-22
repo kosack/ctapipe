@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-282 348,-282 348,4 -4,4"/>
 <!-- ArrayConfig -->
 <g id="node1" class="node"><title>ArrayConfig</title>
-<g id="a_node1"><a xlink:href="../../api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig" xlink:title="Overall description of an array (including all telescope that are" target="_top">
+<g id="a_node1"><a xlink:href="../api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig" xlink:title="Overall description of an array (including all telescope that are">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="200,-278 131,-278 131,-259 200,-259 200,-278"/>
 <text text-anchor="middle" x="165.5" y="-266" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ArrayConfig</text>
 </a>
@@ -19,7 +19,7 @@
 </g>
 <!-- BaseConfig -->
 <g id="node2" class="node"><title>BaseConfig</title>
-<g id="a_node2"><a xlink:href="../../api/ctapipe.instrument.obsconfig.BaseConfig.html#ctapipe.instrument.obsconfig.BaseConfig" xlink:title="BaseConfig" target="_top">
+<g id="a_node2"><a xlink:href="../api/ctapipe.instrument.obsconfig.BaseConfig.html#ctapipe.instrument.obsconfig.BaseConfig" xlink:title="BaseConfig">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="68,-148 0,-148 0,-129 68,-129 68,-148"/>
 <text text-anchor="middle" x="34" y="-136" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">BaseConfig</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- ArrayTriggerConfig -->
 <g id="node3" class="node"><title>ArrayTriggerConfig</title>
-<g id="a_node3"><a xlink:href="../../api/ctapipe.instrument.obsconfig.ArrayTriggerConfig.html#ctapipe.instrument.obsconfig.ArrayTriggerConfig" xlink:title="Contains trigger info for a given run_type" target="_top">
+<g id="a_node3"><a xlink:href="../api/ctapipe.instrument.obsconfig.ArrayTriggerConfig.html#ctapipe.instrument.obsconfig.ArrayTriggerConfig" xlink:title="Contains trigger info for a given run_type">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="216,-241 115,-241 115,-222 216,-222 216,-241"/>
 <text text-anchor="middle" x="165.5" y="-229" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ArrayTriggerConfig</text>
 </a>
@@ -45,7 +45,7 @@
 </g>
 <!-- CameraConfig -->
 <g id="node4" class="node"><title>CameraConfig</title>
-<g id="a_node4"><a xlink:href="../../api/ctapipe.instrument.obsconfig.CameraConfig.html#ctapipe.instrument.obsconfig.CameraConfig" xlink:title="Definition of a Camera, including its pixel geometry and other" target="_top">
+<g id="a_node4"><a xlink:href="../api/ctapipe.instrument.obsconfig.CameraConfig.html#ctapipe.instrument.obsconfig.CameraConfig" xlink:title="Definition of a Camera, including its pixel geometry and other">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="206,-204 125,-204 125,-185 206,-185 206,-204"/>
 <text text-anchor="middle" x="165.5" y="-192" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">CameraConfig</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- ObsConfig -->
 <g id="node5" class="node"><title>ObsConfig</title>
-<g id="a_node5"><a xlink:href="../../api/ctapipe.instrument.obsconfig.ObsConfig.html#ctapipe.instrument.obsconfig.ObsConfig" xlink:title="All configuration information related to an observation run." target="_top">
+<g id="a_node5"><a xlink:href="../api/ctapipe.instrument.obsconfig.ObsConfig.html#ctapipe.instrument.obsconfig.ObsConfig" xlink:title="All configuration information related to an observation run.">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="197.5,-167 133.5,-167 133.5,-148 197.5,-148 197.5,-167"/>
 <text text-anchor="middle" x="165.5" y="-155" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ObsConfig</text>
 </a>
@@ -71,7 +71,7 @@
 </g>
 <!-- OpticsConfig -->
 <g id="node6" class="node"><title>OpticsConfig</title>
-<g id="a_node6"><a xlink:href="../../api/ctapipe.instrument.obsconfig.OpticsConfig.html#ctapipe.instrument.obsconfig.OpticsConfig" xlink:title="Definition of Telescope Optics, including information on the" target="_top">
+<g id="a_node6"><a xlink:href="../api/ctapipe.instrument.obsconfig.OpticsConfig.html#ctapipe.instrument.obsconfig.OpticsConfig" xlink:title="Definition of Telescope Optics, including information on the">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="202.5,-130 128.5,-130 128.5,-111 202.5,-111 202.5,-130"/>
 <text text-anchor="middle" x="165.5" y="-118" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">OpticsConfig</text>
 </a>
@@ -84,7 +84,7 @@
 </g>
 <!-- SubarrayConfig -->
 <g id="node8" class="node"><title>SubarrayConfig</title>
-<g id="a_node8"><a xlink:href="../../api/ctapipe.instrument.obsconfig.SubarrayConfig.html#ctapipe.instrument.obsconfig.SubarrayConfig" xlink:title="Description of a particular Subarray used during an observation or" target="_top">
+<g id="a_node8"><a xlink:href="../api/ctapipe.instrument.obsconfig.SubarrayConfig.html#ctapipe.instrument.obsconfig.SubarrayConfig" xlink:title="Description of a particular Subarray used during an observation or">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="208.5,-93 122.5,-93 122.5,-74 208.5,-74 208.5,-93"/>
 <text text-anchor="middle" x="165.5" y="-81" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">SubarrayConfig</text>
 </a>
@@ -97,7 +97,7 @@
 </g>
 <!-- TelescopeConfig -->
 <g id="node9" class="node"><title>TelescopeConfig</title>
-<g id="a_node9"><a xlink:href="../../api/ctapipe.instrument.obsconfig.TelescopeConfig.html#ctapipe.instrument.obsconfig.TelescopeConfig" xlink:title="Configuration of a single Telescope, including it&#39;s optics and" target="_top">
+<g id="a_node9"><a xlink:href="../api/ctapipe.instrument.obsconfig.TelescopeConfig.html#ctapipe.instrument.obsconfig.TelescopeConfig" xlink:title="Configuration of a single Telescope, including it&#39;s optics and">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="211.5,-56 119.5,-56 119.5,-37 211.5,-37 211.5,-56"/>
 <text text-anchor="middle" x="165.5" y="-44" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">TelescopeConfig</text>
 </a>
@@ -110,7 +110,7 @@
 </g>
 <!-- TelescopeTriggerConfig -->
 <g id="node10" class="node"><title>TelescopeTriggerConfig</title>
-<g id="a_node10"><a xlink:href="../../api/ctapipe.instrument.obsconfig.TelescopeTriggerConfig.html#ctapipe.instrument.obsconfig.TelescopeTriggerConfig" xlink:title="Contains trigger info for a given run_type" target="_top">
+<g id="a_node10"><a xlink:href="../api/ctapipe.instrument.obsconfig.TelescopeTriggerConfig.html#ctapipe.instrument.obsconfig.TelescopeTriggerConfig" xlink:title="Contains trigger info for a given run_type">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="227,-19 104,-19 104,-0 227,-0 227,-19"/>
 <text text-anchor="middle" x="165.5" y="-7" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">TelescopeTriggerConfig</text>
 </a>
@@ -123,7 +123,7 @@
 </g>
 <!-- SimObsConfig -->
 <g id="node7" class="node"><title>SimObsConfig</title>
-<g id="a_node7"><a xlink:href="../../api/ctapipe.instrument.obsconfig.SimObsConfig.html#ctapipe.instrument.obsconfig.SimObsConfig" xlink:title="ObsConfig from a simulation run." target="_top">
+<g id="a_node7"><a xlink:href="../api/ctapipe.instrument.obsconfig.SimObsConfig.html#ctapipe.instrument.obsconfig.SimObsConfig" xlink:title="ObsConfig from a simulation run.">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="344,-167 263,-167 263,-148 344,-148 344,-167"/>
 <text text-anchor="middle" x="303.5" y="-155" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">SimObsConfig</text>
 </a>

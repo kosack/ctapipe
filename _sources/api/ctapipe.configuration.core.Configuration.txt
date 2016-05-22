@@ -1,9 +1,9 @@
 
 
 Configuration
-===================================
+========================================
 
-.. currentmodule:: ctapipe.configuration
+.. currentmodule:: ctapipe.configuration.core
 
 .. autoclass:: Configuration
    :show-inheritance:

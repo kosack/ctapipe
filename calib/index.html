@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calibration &mdash; ctapipe v0.0.dev388</title>
+  <title>Calibration &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
-        <link rel="next" title="Configuration" href="../configuration/index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
+        <link rel="next" title="Array calibration" href="index_array.html"/>
         <link rel="prev" title="Analysis" href="../analysis/index.html"/> 
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -84,12 +84,19 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Calibration</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calibration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_array.html">Array calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_atmo.html">Atmosphere calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_camera.html">Camera calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_pointing.html">Pointing calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-ctapipe.calib">ctapipe.calib Package</a></li>
 </ul>
@@ -127,7 +134,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -153,12 +160,30 @@
 <span id="calib"></span><h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#module-ctapipe.calib" title="ctapipe.calib"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.calib</span></code></a> contains functions and classes for calibration.</p>
-<p>TODO: add high-level description.</p>
+<p>This module include all the functions and classes needed for the Calibration of CTA data.</p>
+<p>It consists in four main sub-modules:</p>
+<ul class="simple">
+<li>Camera Calibration (see <a class="reference internal" href="index_camera.html#calib-camera"><span class="std std-ref">Camera calibration</span></a>)</li>
+<li>Array Calibration (see <a class="reference internal" href="index_array.html#calib-array"><span class="std std-ref">Array calibration</span></a>)</li>
+<li>Atmosphere Calibration (see <a class="reference internal" href="index_atmo.html#calib-atmo"><span class="std std-ref">Atmosphere calibration</span></a>)</li>
+<li>Pointing Calibration (see <a class="reference internal" href="index_pointing.html#calib-pointing"><span class="std std-ref">Pointing calibration</span></a>)</li>
+</ul>
+<p>For more information on where you should implement your code, please have a look to the README.rst files inside each directory.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>TODO: add examples.</p>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index_array.html">Array calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_atmo.html">Atmosphere calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_camera.html">Camera calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_pointing.html">Pointing calibration</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
@@ -176,7 +201,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../configuration/index.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="index_array.html" class="btn btn-neutral float-right" title="Array calibration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../analysis/index.html" class="btn btn-neutral" title="Analysis" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -189,7 +214,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -211,7 +236,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

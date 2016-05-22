@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraFrame &mdash; ctapipe v0.0.dev388</title>
+  <title>CameraFrame &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
         <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
         <link rel="next" title="GroundFrame" href="ctapipe.coordinates.GroundFrame.html"/>
-        <link rel="prev" title="Coordinates" href="../coordinates/index.html"/> 
+        <link rel="prev" title="project_to_ground" href="ctapipe.coordinates.project_to_ground.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -85,7 +85,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
@@ -95,6 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../coordinates/index.html#module-ctapipe.coordinates">ctapipe.coordinates Package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../coordinates/index.html#functions">Functions</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="../coordinates/index.html#classes">Classes</a></li>
 </ul>
 </li>
@@ -131,7 +132,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -161,7 +162,15 @@
 <dt id="ctapipe.coordinates.CameraFrame">
 <em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">CameraFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#CameraFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.CameraFrame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
-<p>Camera coordinate frame.</p>
+<p>Camera coordinate frame.
+The camera frame is a simple physical cartesian frame, describing the 2 dimensional
+position of objects in the focal plane of the telescope
+Most Typically this will be used to describe the positions of the pixels in the focal
+plane</p>
+<p>Frame attributes:</p>
+<ul class="simple">
+<li>None</li>
+</ul>
 <p class="rubric">Attributes Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -210,7 +219,7 @@
         <a href="ctapipe.coordinates.GroundFrame.html" class="btn btn-neutral float-right" title="GroundFrame" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../coordinates/index.html" class="btn btn-neutral" title="Coordinates" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.coordinates.project_to_ground.html" class="btn btn-neutral" title="project_to_ground" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -220,7 +229,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -242,7 +251,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

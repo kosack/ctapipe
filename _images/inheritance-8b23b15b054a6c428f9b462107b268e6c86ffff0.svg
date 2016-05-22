@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-23 64,-23 64,4 -4,4"/>
 <!-- Container -->
 <g id="node1" class="node"><title>Container</title>
-<g id="a_node1"><a xlink:href="../../api/ctapipe.core.Container.html#ctapipe.core.Container" xlink:title="Generic class that can hold and accumulate data to be passed" target="_top">
+<g id="a_node1"><a xlink:href="../api/ctapipe.core.Container.html#ctapipe.core.Container" xlink:title="Generic class that can hold and accumulate data to be passed">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="60,-19 0,-19 0,-0 60,-0 60,-19"/>
 <text text-anchor="middle" x="30" y="-7" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">Container</text>
 </a>

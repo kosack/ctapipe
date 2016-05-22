@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev388</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
         <link rel="next" title="make_rectangular_camera_geometry" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html"/>
         <link rel="prev" title="SimObsConfig" href="../api/ctapipe.instrument.obsconfig.SimObsConfig.html"/> 
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -84,7 +84,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
@@ -93,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Input/Output</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a><ul>
@@ -139,7 +139,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -176,7 +176,7 @@ soon to an instrument package.</p>
 <p>The <a class="reference internal" href="#module-ctapipe.io.hessio" title="ctapipe.io.hessio"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.io.hessio</span></code></a> package provides a convenient wrapper to
 reading <em>simtelarray</em> data files, like those used in CTA monte-carlo
 productions. It requires the <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code> package to be installed (see
-<a class="reference internal" href="../getting_started/index.html#getting-started"><span>Getting Started For Developers</span></a> for instructions installing <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code>).</p>
+<a class="reference internal" href="../getting_started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a> for instructions installing <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code>).</p>
 <div class="figure" id="id3">
 <img alt="../_images/shower.png" src="../_images/shower.png" />
 <p class="caption"><span class="caption-text">an image read from a <em>simtelarray</em> data file.</span></p>
@@ -256,6 +256,15 @@ productions. It requires the <code class="xref py py-obj docutils literal"><span
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.containers.MCShowerData.html#ctapipe.io.containers.MCShowerData" title="ctapipe.io.containers.MCShowerData"><code class="xref py py-obj docutils literal"><span class="pre">MCShowerData</span></code></a>([name])</td>
 <td></td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.containers.MCEvent.html#ctapipe.io.containers.MCEvent" title="ctapipe.io.containers.MCEvent"><code class="xref py py-obj docutils literal"><span class="pre">MCEvent</span></code></a>([name])</td>
+<td>Storage of MC event data</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.containers.MCCamera.html#ctapipe.io.containers.MCCamera" title="ctapipe.io.containers.MCCamera"><code class="xref py py-obj docutils literal"><span class="pre">MCCamera</span></code></a>(tel_id)</td>
+<td>Storage of mc data used for a single telescope</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.containers.CalibratedCameraData.html#ctapipe.io.containers.CalibratedCameraData" title="ctapipe.io.containers.CalibratedCameraData"><code class="xref py py-obj docutils literal"><span class="pre">CalibratedCameraData</span></code></a>(tel_id)</td>
+<td>Storage of calibrated (p.e.) data from a single telescope</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -283,7 +292,7 @@ productions. It requires the <code class="xref py py-obj docutils literal"><span
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -305,7 +314,7 @@ productions. It requires the <code class="xref py py-obj docutils literal"><span
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

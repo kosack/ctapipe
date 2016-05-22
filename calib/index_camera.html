@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Camera calibration &mdash; ctapipe v0.0.dev602</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
+        <link rel="up" title="Calibration" href="index.html"/>
+        <link rel="next" title="Pointing calibration" href="index_pointing.html"/>
+        <link rel="prev" title="Atmosphere calibration" href="index_atmo.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ctapipe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.dev602
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calibration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index_array.html">Array calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_atmo.html">Atmosphere calibration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Camera calibration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_pointing.html">Pointing calibration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Calibration</a> &raquo;</li>
+      
+    <li>Camera calibration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/calib/index_camera.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="camera-calibration">
+<span id="calib-camera"></span><h1>Camera calibration<a class="headerlink" href="#camera-calibration" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the functions to calibrate the CTA cameras.</p>
+<p>These functions are divided into the different python modules:</p>
+<ul class="simple">
+<li>MC Camera calibration (<code class="xref py py-obj docutils literal"><span class="pre">mc.py</span></code>)</li>
+</ul>
+<ul>
+<li><p class="first">Camera prototypes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>LST Camera (<code class="xref py py-obj docutils literal"><span class="pre">lstcam.py</span></code>)</li>
+<li>MST-NectarCam Camera (<code class="xref py py-obj docutils literal"><span class="pre">nectarcam.py</span></code>)</li>
+<li>MST-FlashCam Camera (<code class="xref py py-obj docutils literal"><span class="pre">flashcam.py</span></code>)</li>
+<li>SST-GCT Camera (<code class="xref py py-obj docutils literal"><span class="pre">gctcam.py</span></code>)</li>
+<li>SST-ASTRI Camera (<code class="xref py py-obj docutils literal"><span class="pre">astricam.py</span></code>)</li>
+<li>SST-1M Camera (<code class="xref py py-obj docutils literal"><span class="pre">digicam.py</span></code>)</li>
+<li>MST-SCT Camera (<code class="xref py py-obj docutils literal"><span class="pre">sctcam.py</span></code>)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Camera Calibration (<code class="xref py py-obj docutils literal"><span class="pre">camera_calibration.py</span></code>)</p>
+</li>
+</ul>
+<p>For a more detailed description of each module and where the different developers should include their code, see README.rst in ctapipe/calib/camera/ directory.</p>
+<div class="section" id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ctapipe.calib.camera">
+<span id="ctapipe-calib-camera-package"></span><h3>ctapipe.calib.camera Package<a class="headerlink" href="#module-ctapipe.calib.camera" title="Permalink to this headline">¶</a></h3>
+<p>Calibration</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_pointing.html" class="btn btn-neutral float-right" title="Pointing calibration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_atmo.html" class="btn btn-neutral" title="Atmosphere calibration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, ctapipe developers.
+      Last updated on 22 May 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.dev602',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

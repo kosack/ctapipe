@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev388</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -83,7 +83,7 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a></li>
@@ -252,14 +252,20 @@
                               <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_area</span><span class="p">))):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;hex&quot;</span><span class="p">):</span>
                 <span class="n">rr</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">aa</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-                <span class="n">poly</span> <span class="o">=</span> <span class="n">RegularPolygon</span><span class="p">((</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
-                                      <span class="n">orientation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-                                      <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                <span class="n">poly</span> <span class="o">=</span> <span class="n">RegularPolygon</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
+                    <span class="n">orientation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_rotation</span><span class="o">.</span><span class="n">rad</span><span class="p">,</span>
+                    <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">rr</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span>
-                <span class="n">poly</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
-                                 <span class="n">angle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-                                 <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                <span class="n">poly</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span>
+                    <span class="n">width</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
+                    <span class="n">height</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
+                    <span class="n">angle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_rotation</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
+                    <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="p">)</span>
 
             <span class="n">patches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
 
@@ -340,17 +346,19 @@
 
     <span class="nd">@norm.setter</span>
     <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">):</span>
+
         <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="s1">&#39;lin&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">norm</span> <span class="o">==</span> <span class="s1">&#39;log&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">LogNorm</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>  <span class="c1"># this is to handle matplotlib bug #5424</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">Normalize</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unsupported norm: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">norm</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">changed</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -398,11 +406,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<div class="viewcode-block" id="CameraDisplay.update"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CameraDisplay.update"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; signal a redraw if necessary &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">autoupdate</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">update_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">force</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">update_bruteforce</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">update_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">draw_all</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span></div>
 
@@ -551,7 +562,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -573,7 +584,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

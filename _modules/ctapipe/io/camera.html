@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev388</title>
+  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -83,7 +83,7 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a></li>
@@ -148,6 +148,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 <span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">Angle</span>
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">cKDTree</span> <span class="k">as</span> <span class="n">KDTree</span>
 
 <span class="kn">from</span> <span class="nn">.files</span> <span class="kn">import</span> <span class="n">get_file_type</span>
@@ -160,13 +161,18 @@
 
 <span class="c1"># dictionary to convert number of pixels to camera type for use in</span>
 <span class="c1"># guess_camera_geometry.</span>
-<span class="c1"># Key = (npix, pix_seperation_m)</span>
-<span class="c1"># Value = (type, subtype, pixtype)</span>
-<span class="n">_npix_to_type</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">2048</span><span class="p">,</span> <span class="mf">0.006</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;SST&#39;</span><span class="p">,</span> <span class="s1">&#39;GATE&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangular&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mf">0.042</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;LST&#39;</span><span class="p">,</span> <span class="s1">&#39;HESSII&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="mi">1141</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;MST&#39;</span><span class="p">,</span> <span class="s1">&#39;NectarCam&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="mi">1855</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;LST&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTCam&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="mi">11328</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;SCT&#39;</span><span class="p">,</span> <span class="s1">&#39;SCTCam&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangular&#39;</span><span class="p">)}</span>
+<span class="c1"># Key = (npix, pix_separation_m)</span>
+<span class="c1"># Value = (type, subtype, pixtype, pixrotation, camrotation)</span>
+<span class="n">_npix_to_type</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">):</span>   <span class="p">(</span><span class="s1">&#39;SST&#39;</span><span class="p">,</span> <span class="s1">&#39;GATE&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangular&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mf">36.0</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;LST&#39;</span><span class="p">,</span> <span class="s1">&#39;HESSII&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1855</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;MST&#39;</span><span class="p">,</span> <span class="s1">&#39;NectarCam&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="o">-</span><span class="mf">100.893</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1855</span><span class="p">,</span> <span class="mf">28.0</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;LST&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTCam&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mf">0.</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="o">-</span><span class="mf">100.893</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1296</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;SST&#39;</span><span class="p">,</span> <span class="s1">&#39;SST-1m&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1764</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;MST&#39;</span><span class="p">,</span> <span class="s1">&#39;FlashCam&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2368</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>  <span class="p">(</span><span class="s1">&#39;SST&#39;</span><span class="p">,</span> <span class="s1">&#39;ASTRI&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangular&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">11328</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span> <span class="p">(</span><span class="s1">&#39;SCT&#39;</span><span class="p">,</span> <span class="s1">&#39;SCTCam&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangular&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+<span class="p">}</span>
 
 
 <div class="viewcode-block" id="CameraGeometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry">[docs]</a><span class="k">class</span> <span class="nc">CameraGeometry</span><span class="p">:</span>
@@ -181,7 +187,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">pix_id</span><span class="p">,</span> <span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span>
-                 <span class="n">pix_area</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">pix_type</span><span class="p">):</span>
+                 <span class="n">pix_area</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">pix_type</span><span class="p">,</span> <span class="n">pix_rotation</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">cam_rotation</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -201,6 +207,10 @@
 <span class="sd">            adjacency list for each pixel</span>
 <span class="sd">        pix_type: string</span>
 <span class="sd">            either &#39;rectangular&#39; or &#39;hexagonal&#39;</span>
+<span class="sd">        pix_rotation: value convertable to an `astropy.coordinates.Angle`</span>
+<span class="sd">            rotation angle with unit (e.g. 12 * u.deg), or &quot;12d&quot;</span>
+<span class="sd">        cam_rotation: overall camera rotation with units</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cam_id</span> <span class="o">=</span> <span class="n">cam_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pix_id</span> <span class="o">=</span> <span class="n">pix_id</span>
@@ -209,14 +219,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pix_area</span> <span class="o">=</span> <span class="n">pix_area</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbors</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pix_type</span> <span class="o">=</span> <span class="n">pix_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_rotation</span> <span class="o">=</span> <span class="n">Angle</span><span class="p">(</span><span class="n">pix_rotation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cam_rotation</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-<div class="viewcode-block" id="CameraGeometry.guess"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.guess">[docs]</a>    <span class="k">def</span> <span class="nf">guess</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">):</span>
+<div class="viewcode-block" id="CameraGeometry.guess"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.guess">[docs]</a>    <span class="k">def</span> <span class="nf">guess</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">optical_foclen</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct a `CameraGeometry` by guessing the appropriate quantities</span>
 <span class="sd">        from a list of pixel positions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">guess_camera_geometry</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">guess_camera_geometry</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">optical_foclen</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="CameraGeometry.from_name"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.from_name">[docs]</a>    <span class="k">def</span> <span class="nf">from_name</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
@@ -245,8 +257,11 @@
                      <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pix_id&#39;</span><span class="p">,</span> <span class="s1">&#39;pix_x&#39;</span><span class="p">,</span> <span class="s1">&#39;pix_y&#39;</span><span class="p">,</span> <span class="s1">&#39;pix_area&#39;</span><span class="p">],</span>
                      <span class="n">meta</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">pix_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pix_type</span><span class="p">,</span>
                                <span class="n">TYPE</span><span class="o">=</span><span class="s1">&#39;CameraGeometry&#39;</span><span class="p">,</span>
-                               <span class="n">CAM_ID</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_id</span><span class="p">))</span></div>
+                               <span class="n">CAM_ID</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_id</span><span class="p">,</span>
+                               <span class="n">CAM_ROTATION</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_rotation</span><span class="p">))</span></div>
 
+
+    
 <div class="viewcode-block" id="CameraGeometry.rotate"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.rotate">[docs]</a>    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;rotate the camera coordinates about the center of the camera by</span>
 <span class="sd">        specified angle. Modifies the CameraGeometry in-place (so</span>
@@ -272,7 +287,9 @@
         <span class="n">rotmat</span> <span class="o">=</span> <span class="n">rotation_matrix_2d</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
         <span class="n">rotated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotmat</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pix_y</span><span class="o">.</span><span class="n">value</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span> <span class="o">=</span> <span class="n">rotated</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">unit</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pix_y</span> <span class="o">=</span> <span class="n">rotated</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">unit</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_y</span> <span class="o">=</span> <span class="n">rotated</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_rotation</span> <span class="o">-=</span> <span class="n">angle</span></div></div>
+
 
 <span class="c1"># ======================================================================</span>
 <span class="c1"># utility functions:</span>
@@ -309,30 +326,40 @@
     <span class="k">return</span> <span class="n">neighbors</span>
 
 
-<span class="k">def</span> <span class="nf">_guess_camera_type</span><span class="p">(</span><span class="n">npix</span><span class="p">,</span> <span class="n">pix_sep</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_guess_camera_type</span><span class="p">(</span><span class="n">npix</span><span class="p">,</span> <span class="n">optical_foclen</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">_npix_to_type</span>
+
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_npix_to_type</span><span class="p">[(</span><span class="n">npix</span><span class="p">,</span> <span class="bp">None</span><span class="p">)]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">_npix_to_type</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">npix</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pix_sep</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
-                                 <span class="p">(</span><span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">_npix_to_type</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">npix</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">optical_foclen</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                                 <span class="p">(</span><span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagonal&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">))</span>
 
 
 <span class="nd">@u.quantity_input</span>
-<span class="k">def</span> <span class="nf">guess_camera_geometry</span><span class="p">(</span><span class="n">pix_x</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">guess_camera_geometry</span><span class="p">(</span><span class="n">pix_x</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">optical_foclen</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; returns a CameraGeometry filled in from just the x,y positions</span>
 
 <span class="sd">    Assumes:</span>
 <span class="sd">    --------</span>
 <span class="sd">    - the pixels are square or hexagonal</span>
-<span class="sd">    - the first two pixels are adjacent</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">dx</span> <span class="o">=</span> <span class="n">pix_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">dy</span> <span class="o">=</span> <span class="n">pix_y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># dist between two pixels</span>
-    <span class="n">tel_type</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">pix_type</span> <span class="o">=</span> <span class="n">_guess_camera_type</span><span class="p">(</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">),</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="c1">#    dx = pix_x[1] - pix_x[0]    &lt;=== Not adjacent for DC-SSTs!!</span>
+<span class="c1">#    dy = pix_y[1] - pix_y[0]</span>
+
+    <span class="n">pixsep</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ipix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">)):</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">pix_x</span><span class="p">[</span><span class="n">ipix</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">pix_y</span><span class="p">[</span><span class="n">ipix</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># dist between pixels 0 and ipix</span>
+        <span class="n">pixsep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">dist</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pixsep</span><span class="p">)</span>
+
+    <span class="n">tel_type</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">pix_type</span><span class="p">,</span> <span class="n">pix_rotation</span><span class="p">,</span> <span class="n">cam_rotation</span> <span class="o">=</span> <span class="n">_guess_camera_type</span><span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">),</span> <span class="n">optical_foclen</span>
+    <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">pix_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">):</span>
         <span class="n">rad</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># radius to vertex of hexagon</span>
@@ -342,15 +369,21 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;unsupported pixel type&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">CameraGeometry</span><span class="p">(</span><span class="n">cam_id</span><span class="o">=</span><span class="n">cam_id</span><span class="p">,</span>
-                          <span class="n">pix_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">)),</span>
-                          <span class="n">pix_x</span><span class="o">=</span><span class="n">pix_x</span><span class="p">,</span>
-                          <span class="n">pix_y</span><span class="o">=</span><span class="n">pix_y</span><span class="p">,</span>
-                          <span class="n">pix_area</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">area</span><span class="p">,</span>
-                          <span class="n">neighbors</span><span class="o">=</span><span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">pix_x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                                                         <span class="n">pix_y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                                                         <span class="mf">1.4</span> <span class="o">*</span> <span class="n">dist</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
-                          <span class="n">pix_type</span><span class="o">=</span><span class="n">pix_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CameraGeometry</span><span class="p">(</span>
+        <span class="n">cam_id</span><span class="o">=</span><span class="n">cam_id</span><span class="p">,</span>
+        <span class="n">pix_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">)),</span>
+        <span class="n">pix_x</span><span class="o">=</span><span class="n">pix_x</span><span class="p">,</span>
+        <span class="n">pix_y</span><span class="o">=</span><span class="n">pix_y</span><span class="p">,</span>
+        <span class="n">pix_area</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">area</span><span class="p">,</span>
+        <span class="n">neighbors</span><span class="o">=</span><span class="n">find_neighbor_pixels</span><span class="p">(</span>
+            <span class="n">pix_x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">pix_y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="mf">1.4</span> <span class="o">*</span> <span class="n">dist</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">pix_type</span><span class="o">=</span><span class="n">pix_type</span><span class="p">,</span>
+        <span class="n">pix_rotation</span><span class="o">=</span><span class="n">pix_rotation</span><span class="p">,</span>
+        <span class="n">cam_rotation</span><span class="o">=</span><span class="n">cam_rotation</span><span class="p">,</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">get_camera_geometry</span><span class="p">(</span><span class="n">instrument_name</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">recalc_neighbors</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
@@ -445,8 +478,10 @@
     <span class="n">events</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">move_to_next_event</span><span class="p">()</span>
     <span class="nb">next</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>  <span class="c1"># load at least one event to get all the headers</span>
     <span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_pixel_position</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+    <span class="n">optical_foclen</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_optical_foclen</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+
     <span class="n">hessio</span><span class="o">.</span><span class="n">close_file</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">CameraGeometry</span><span class="o">.</span><span class="n">guess</span><span class="p">(</span><span class="n">pix_x</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">pix_y</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CameraGeometry</span><span class="o">.</span><span class="n">guess</span><span class="p">(</span><span class="n">pix_x</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">pix_y</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">optical_foclen</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="make_rectangular_camera_geometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry">[docs]</a><span class="k">def</span> <span class="nf">make_rectangular_camera_geometry</span><span class="p">(</span><span class="n">npix_x</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">npix_y</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
@@ -501,7 +536,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -523,7 +558,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

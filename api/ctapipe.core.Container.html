@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Container &mdash; ctapipe v0.0.dev388</title>
+  <title>Container &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
         <link rel="up" title="Core Data Structures" href="../core/index.html"/>
         <link rel="next" title="Datasets" href="../datasets/index.html"/>
         <link rel="prev" title="component" href="ctapipe.core.component.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -85,7 +85,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
@@ -132,7 +132,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -218,6 +218,18 @@ Container, otherwise an <code class="xref py py-obj docutils literal"><span clas
 <tr class="row-odd"><td><a class="reference internal" href="#ctapipe.core.Container.add_item" title="ctapipe.core.Container.add_item"><code class="xref py py-obj docutils literal"><span class="pre">add_item</span></code></a>(name[,&nbsp;value])</td>
 <td>Add a new item of data to this Container, initialized to None by default, or value if specified.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.core.Container.as_dict" title="ctapipe.core.Container.as_dict"><code class="xref py py-obj docutils literal"><span class="pre">as_dict</span></code></a>()</td>
+<td>Creates a dictionary of Container items unrolling recursively nested containers.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.core.Container.items" title="ctapipe.core.Container.items"><code class="xref py py-obj docutils literal"><span class="pre">items</span></code></a>()</td>
+<td>Iterate over pairs of key, value.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.core.Container.to_table" title="ctapipe.core.Container.to_table"><code class="xref py py-obj docutils literal"><span class="pre">to_table</span></code></a>()</td>
+<td>Create Table from Container</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.core.Container.write" title="ctapipe.core.Container.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>Write table using astropy.table write method</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Attributes Documentation</p>
@@ -233,6 +245,31 @@ Container, otherwise an <code class="xref py py-obj docutils literal"><span clas
 <code class="descname">add_item</code><span class="sig-paren">(</span><em>name</em>, <em>value=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/core.html#Container.add_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.core.Container.add_item" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a new item of data to this Container, initialized to None by
 default, or value if specified.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.core.Container.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/core.html#Container.as_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.core.Container.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary of Container items unrolling recursively
+nested containers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.core.Container.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/core.html#Container.items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.core.Container.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over pairs of key, value. Just like the dictionary method</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.core.Container.to_table">
+<code class="descname">to_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/core.html#Container.to_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.core.Container.to_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Table from Container</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.core.Container.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/core.html#Container.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.core.Container.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write table using astropy.table write method</p>
 </dd></dl>
 
 </dd></dl>
@@ -259,7 +296,7 @@ default, or value if specified.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -281,7 +318,7 @@ default, or value if specified.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

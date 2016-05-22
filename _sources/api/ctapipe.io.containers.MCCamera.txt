@@ -1,0 +1,29 @@
+
+
+MCCamera
+==============================
+
+.. currentmodule:: ctapipe.io.containers
+
+.. autoclass:: MCCamera
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

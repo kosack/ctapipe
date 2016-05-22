@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.containers &mdash; ctapipe v0.0.dev388</title>
+  <title>ctapipe.io.containers &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev602" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -83,7 +83,7 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a></li>
@@ -147,7 +147,7 @@
 <span class="kn">from</span> <span class="nn">ctapipe.core</span> <span class="kn">import</span> <span class="n">Container</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RawData&#39;</span><span class="p">,</span> <span class="s1">&#39;RawCameraData&#39;</span><span class="p">,</span> <span class="s1">&#39;MCShowerData&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RawData&#39;</span><span class="p">,</span> <span class="s1">&#39;RawCameraData&#39;</span><span class="p">,</span> <span class="s1">&#39;MCShowerData&#39;</span><span class="p">,</span> <span class="s1">&#39;MCEvent&#39;</span><span class="p">,</span> <span class="s1">&#39;CalibratedCameraData&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="RawData"><a class="viewcode-back" href="../../../api/ctapipe.io.containers.RawData.html#ctapipe.io.containers.RawData">[docs]</a><span class="k">class</span> <span class="nc">RawData</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
@@ -156,7 +156,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    </span>
+
 <span class="sd">    run_id : int</span>
 <span class="sd">        run number</span>
 <span class="sd">    event_id : int</span>
@@ -168,51 +168,95 @@
 <span class="sd">    tel : dict of `RawCameraData` by tel_id</span>
 <span class="sd">        dictionary of the data for each telescope</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;RawData&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">RawData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;run_id&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;event_id&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;tels_with_data&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;tel&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
 
+
 <div class="viewcode-block" id="MCShowerData"><a class="viewcode-back" href="../../../api/ctapipe.io.containers.MCShowerData.html#ctapipe.io.containers.MCShowerData">[docs]</a><span class="k">class</span> <span class="nc">MCShowerData</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MCShowerData&#39;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MCShowerData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;alt&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;az&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;core_x&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;core_y&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;core_y&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">return_string</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="o">+</span><span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;energy:   {0:.2}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="p">)</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;altitude: {0:.2}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alt</span><span class="p">)</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;azimuth:  {0:.2}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">az</span><span class="p">)</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;core x:   {0:.4}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">core_x</span><span class="p">)</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;core y:   {0:.4}&quot;</span>  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">core_y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">return_string</span></div>
+
+<div class="viewcode-block" id="MCEvent"><a class="viewcode-back" href="../../../api/ctapipe.io.containers.MCEvent.html#ctapipe.io.containers.MCEvent">[docs]</a><span class="k">class</span> <span class="nc">MCEvent</span><span class="p">(</span><span class="n">MCShowerData</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MCEvent&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;photo_electrons&#39;</span><span class="p">,</span><span class="nb">dict</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">return_string</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__str__</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">NPix</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">photo_electrons</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pix</span> <span class="ow">in</span> <span class="n">tel</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">pix</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">NPix</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">return_string</span> <span class="o">+=</span> <span class="s2">&quot;hit pixels: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">NPix</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">return_string</span></div>
+
 
 <span class="k">class</span> <span class="nc">CentralTriggerData</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CentralTriggerData&#39;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CentralTriggerData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;gps_time&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;tels_with_trigger&#39;</span><span class="p">)</span>
 
 
-        
 <div class="viewcode-block" id="RawCameraData"><a class="viewcode-back" href="../../../api/ctapipe.io.containers.RawCameraData.html#ctapipe.io.containers.RawCameraData">[docs]</a><span class="k">class</span> <span class="nc">RawCameraData</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">    Storage of raw data from a single telescope </span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Storage of raw data from a single telescope</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 
 <span class="sd">    adc_sums : dict by channel</span>
-<span class="sd">        arrays of all integrated ADC data (n_pixels)</span>
+<span class="sd">        (masked) arrays of all integrated ADC data (n_pixels)</span>
 <span class="sd">    adc_samples : dict by channel</span>
-<span class="sd">        arrays of non-integrated ADC sample data (n_pixels, n_samples)</span>
+<span class="sd">        (masked) arrays of non-integrated ADC sample data (n_pixels, n_samples)</span>
 <span class="sd">    num_channels : int</span>
 <span class="sd">        number of gain channels in camera</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">RawCameraData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s2">&quot;CT{:03d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tel_id</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s2">&quot;CT{:03d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tel_id</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;adc_sums&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;adc_samples&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;num_channels&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CalibratedCameraData"><a class="viewcode-back" href="../../../api/ctapipe.io.containers.CalibratedCameraData.html#ctapipe.io.containers.CalibratedCameraData">[docs]</a><span class="k">class</span> <span class="nc">CalibratedCameraData</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Storage of calibrated (p.e.) data from a single telescope</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    pe_charge : dict (only one channel)</span>
+<span class="sd">        arrays of all calibrated data (n_pixels)</span>
+<span class="sd">    tom : time of maximum</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CalibratedCameraData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s2">&quot;CT{:03d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tel_id</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;run_id&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;event_id&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;tels_with_data&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;pe_charge&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span></div>
 </pre></div>
 
            </div>
@@ -225,7 +269,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -247,7 +291,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

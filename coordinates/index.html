@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Coordinates &mdash; ctapipe v0.0.dev388</title>
+  <title>Coordinates &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
-        <link rel="next" title="CameraFrame" href="../api/ctapipe.coordinates.CameraFrame.html"/>
-        <link rel="prev" title="ConfigurationException" href="../api/ctapipe.configuration.ConfigurationException.html"/> 
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
+        <link rel="next" title="project_to_ground" href="../api/ctapipe.coordinates.project_to_ground.html"/>
+        <link rel="prev" title="Configuration" href="../api/ctapipe.configuration.core.Configuration.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -84,12 +84,12 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Coordinates</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coordinates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#todo">TODO:</a></li>
 </ul>
@@ -97,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-ctapipe.coordinates">ctapipe.coordinates Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 </li>
@@ -133,7 +134,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -161,7 +162,7 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="#module-ctapipe.coordinates" title="ctapipe.coordinates"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.coordinates</span></code></a> contains coordinate frame definitions and coordinate
 transformation routines.
-It is built on <a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html#module-astropy.coordinates" title="(in Astropy v1.1.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.coordinates</span></code></a>, which internally use the ERFA
+It is built on <a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html#module-astropy.coordinates" title="(in Astropy v1.1.2)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.coordinates</span></code></a>, which internally use the ERFA
 coordinate transformation library, the open-source-licensed fork of the IAU
 SOFA system.</p>
 <p>Maybe we&#8217;ll use the <a class="reference external" href="http://gwcs.readthedocs.org/en/latest/">gwcs</a> package
@@ -170,7 +171,7 @@ transformations, e.g. precision pointing corrections using a pointing model.</p>
 <div class="section" id="todo">
 <h3>TODO:<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>include time transform examples (using <a class="reference external" href="http://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v1.1.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.time</span></code></a>), particularly
+<li>include time transform examples (using <a class="reference external" href="http://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v1.1.2)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.time</span></code></a>), particularly
 to the CTA-standard Mission-Elapsed (MET) time system, which is a
 Terrestrial Time with a specific MJD_offset.</li>
 </ul>
@@ -207,12 +208,12 @@ another, it is most efficient to pass them all at once.</p>
 </pre></div>
 </div>
 <p>The result is a set of coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;TelescopeFrame Coordinate (focal_length=15.0 m): (x, y, z) [dimensionless]
-   [(0.00666667, -0.00666667, 0.0), (0.01333333, 0.02666667, 0.0),
-   (0.02, -0.02666667, 0.0), (0.02666667, 0.04, 0.0),
-   (0.03333333, -0.04, 0.0)]&gt;
-X: [ 0.00666667  0.01333333  0.02        0.02666667  0.03333333]
-Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">TelescopeFrame</span> <span class="n">Coordinate</span> <span class="p">(</span><span class="n">focal_length</span><span class="o">=</span><span class="mf">15.0</span> <span class="n">m</span><span class="p">):</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="p">[</span><span class="n">dimensionless</span><span class="p">]</span>
+   <span class="p">[(</span><span class="mf">0.00666667</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00666667</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.01333333</span><span class="p">,</span> <span class="mf">0.02666667</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.02666667</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.02666667</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+   <span class="p">(</span><span class="mf">0.03333333</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)]</span><span class="o">&gt;</span>
+<span class="n">X</span><span class="p">:</span> <span class="p">[</span> <span class="mf">0.00666667</span>  <span class="mf">0.01333333</span>  <span class="mf">0.02</span>        <span class="mf">0.02666667</span>  <span class="mf">0.03333333</span><span class="p">]</span>
+<span class="n">Y</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.00666667</span>  <span class="mf">0.02666667</span> <span class="o">-</span><span class="mf">0.02666667</span>  <span class="mf">0.04</span>       <span class="o">-</span><span class="mf">0.04</span>      <span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -221,6 +222,20 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
 <div class="section" id="module-ctapipe.coordinates">
 <span id="ctapipe-coordinates-package"></span><h3>ctapipe.coordinates Package<a class="headerlink" href="#module-ctapipe.coordinates" title="Permalink to this headline">¶</a></h3>
 <p>Coordinates.</p>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.coordinates.project_to_ground.html#ctapipe.coordinates.project_to_ground" title="ctapipe.coordinates.project_to_ground"><code class="xref py py-obj docutils literal"><span class="pre">project_to_ground</span></code></a>(tilt_system)</td>
+<td>Project position in the tilted system onto the ground.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="classes">
 <h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
@@ -235,11 +250,14 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.coordinates.GroundFrame.html#ctapipe.coordinates.GroundFrame" title="ctapipe.coordinates.GroundFrame"><code class="xref py py-obj docutils literal"><span class="pre">GroundFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
 <td>Ground coordinate frame.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame" title="ctapipe.coordinates.TelescopeFrame"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame" title="ctapipe.coordinates.NominalFrame"><code class="xref py py-obj docutils literal"><span class="pre">NominalFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>Nominal coordinate frame.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame" title="ctapipe.coordinates.TelescopeFrame"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
 <td>Telescope coordinate frame.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.coordinates.TiltedTelescopeFrame.html#ctapipe.coordinates.TiltedTelescopeFrame" title="ctapipe.coordinates.TiltedTelescopeFrame"><code class="xref py py-obj docutils literal"><span class="pre">TiltedTelescopeFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
-<td>Tilted telescope coordinate frame.</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.coordinates.TiltedGroundFrame.html#ctapipe.coordinates.TiltedGroundFrame" title="ctapipe.coordinates.TiltedGroundFrame"><code class="xref py py-obj docutils literal"><span class="pre">TiltedGroundFrame</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>Tilted ground coordinate frame.</td>
 </tr>
 </tbody>
 </table>
@@ -255,10 +273,10 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.coordinates.CameraFrame.html" class="btn btn-neutral float-right" title="CameraFrame" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.coordinates.project_to_ground.html" class="btn btn-neutral float-right" title="project_to_ground" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../api/ctapipe.configuration.ConfigurationException.html" class="btn btn-neutral" title="ConfigurationException" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api/ctapipe.configuration.core.Configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -268,7 +286,7 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -290,7 +308,7 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

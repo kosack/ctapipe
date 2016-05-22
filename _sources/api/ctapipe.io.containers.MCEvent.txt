@@ -1,0 +1,29 @@
+
+
+MCEvent
+=============================
+
+.. currentmodule:: ctapipe.io.containers
+
+.. autoclass:: MCEvent
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

@@ -1,0 +1,8 @@
+
+
+ConfigurationException
+=================================================
+
+.. currentmodule:: ctapipe.configuration.core
+
+.. autoexception:: ConfigurationException

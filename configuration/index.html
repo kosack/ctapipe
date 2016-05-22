@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuration &mdash; ctapipe v0.0.dev388</title>
+  <title>Configuration &mdash; ctapipe v0.0.dev602</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
-        <link rel="next" title="Configuration" href="../api/ctapipe.configuration.Configuration.html"/>
-        <link rel="prev" title="Calibration" href="../calib/index.html"/> 
+    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
+        <link rel="next" title="ConfigurationException" href="../api/ctapipe.configuration.core.ConfigurationException.html"/>
+        <link rel="prev" title="Pointing calibration" href="../calib/index_pointing.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev388
+                0.0.dev602
               </div>
             
           
@@ -84,15 +84,15 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-ctapipe.configuration">ctapipe.configuration Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-ctapipe.configuration.core">ctapipe.configuration.core Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
 </ul>
@@ -131,7 +131,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -157,19 +157,41 @@
 <span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#module-ctapipe.configuration" title="ctapipe.configuration"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.configuration</span></code></a> contains functions and classes to help
-read/parse/store configuration metadata (e.g. parameters used when
-launching pipeline tools).</p>
+<p><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.configuration</span></code>
+This module allows to get command-line options and configuation values from file in a same object instance.
+On the one hand, this module implements a basic configuration file parser language which provides a FITS stucture and a structure similar to what you would find on Microsoft Windows INI files.
+On the other hand, as It derives form argparse.ArgumentParser, this module makes it easy to write user-friendly command-line interfaces. The program defines what arguments it requires, and it will figure out how to parse those out of sys.argv. This module also automatically generates help and usage messages and issues errors when users give the program invalid arguments.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>[For command-line options refer to argparse.ArgumentParser documentation](<a class="reference external" href="https://docs.python.org/3/library/argparse.html">https://docs.python.org/3/library/argparse.html</a>)</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ctapipe.configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--name&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">current_name</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;CTA&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>[For configuation parser refer to configparser documentation](<a class="reference external" href="https://docs.python.org/3/library/configparser.html#module-ConfigParser">https://docs.python.org/3/library/configparser.html#module-ConfigParser</a>)</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ctapipe.configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;section&quot;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;my comment&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;example.fits&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">readed_conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">readed_conf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;example.fits&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">=</span> <span class="n">readed_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;section&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="module-ctapipe.configuration">
-<span id="ctapipe-configuration-package"></span><h3>ctapipe.configuration Package<a class="headerlink" href="#module-ctapipe.configuration" title="Permalink to this headline">¶</a></h3>
-<p>This module contains configuration and setup utilities for the
-ctapipe project.</p>
+<div class="section" id="module-ctapipe.configuration.core">
+<span id="ctapipe-configuration-core-module"></span><h3>ctapipe.configuration.core Module<a class="headerlink" href="#module-ctapipe.configuration.core" title="Permalink to this headline">¶</a></h3>
+<p>Configuration service utilities</p>
 <div class="section" id="classes">
 <h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
@@ -178,21 +200,19 @@ ctapipe project.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration" title="ctapipe.configuration.Configuration"><code class="xref py py-obj docutils literal"><span class="pre">Configuration</span></code></a>([other])</td>
-<td>Configuration initialization if other is not None and its type is</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.configuration.ConfigurationException.html#ctapipe.configuration.ConfigurationException" title="ctapipe.configuration.ConfigurationException"><code class="xref py py-obj docutils literal"><span class="pre">ConfigurationException</span></code></a>(msg)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.configuration.core.ConfigurationException.html#ctapipe.configuration.core.ConfigurationException" title="ctapipe.configuration.core.ConfigurationException"><code class="xref py py-obj docutils literal"><span class="pre">ConfigurationException</span></code></a>(msg)</td>
 <td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration" title="ctapipe.configuration.core.Configuration"><code class="xref py py-obj docutils literal"><span class="pre">Configuration</span></code></a>([other])</td>
+<td>Configuration initialization if other is not None and its type is</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
-<p class="graphviz">
-<object data="../_images/inheritance-09fd70fe37e66f54186b9d11547447353a1ee97d.svg" type="image/svg+xml">
-            <p class="warning">Inheritance diagram of ctapipe.configuration.core.Configuration, ctapipe.configuration.core.ConfigurationException</p></object>
-</p>
+<object data="../_images/inheritance-cf9f544b56a93746dfba7a89d7585d36e193232e.svg" type="image/svg+xml">
+            <p class="warning">Inheritance diagram of ctapipe.configuration.core.ConfigurationException, ctapipe.configuration.core.Configuration</p></object>
 </div>
 </div>
 </div>
@@ -205,10 +225,10 @@ ctapipe project.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.configuration.Configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.configuration.core.ConfigurationException.html" class="btn btn-neutral float-right" title="ConfigurationException" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../calib/index.html" class="btn btn-neutral" title="Calibration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../calib/index_pointing.html" class="btn btn-neutral" title="Pointing calibration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -218,7 +238,7 @@ ctapipe project.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 09 Mar 2016.
+      Last updated on 22 May 2016.
 
     </p>
   </div>
@@ -240,7 +260,7 @@ ctapipe project.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev388',
+            VERSION:'0.0.dev602',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

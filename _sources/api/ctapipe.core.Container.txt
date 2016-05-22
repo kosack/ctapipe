@@ -32,6 +32,10 @@ Container
    .. autosummary::
    
       ~Container.add_item
+      ~Container.as_dict
+      ~Container.items
+      ~Container.to_table
+      ~Container.write
 
    
    
@@ -54,6 +58,10 @@ Container
 
    
    .. automethod:: add_item
+   .. automethod:: as_dict
+   .. automethod:: items
+   .. automethod:: to_table
+   .. automethod:: write
 
    
    
