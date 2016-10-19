@@ -1,8 +1,0 @@
-
-
-component
-======================
-
-.. currentmodule:: ctapipe.core
-
-.. autofunction:: component

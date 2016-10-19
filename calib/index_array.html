@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Array calibration &mdash; ctapipe v0.0.dev602</title>
+  <title>Array calibration &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="up" title="Calibration" href="index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="up" title="Calibration (calib)" href="index.html"/>
         <link rel="next" title="Atmosphere calibration" href="index_atmo.html"/>
-        <link rel="prev" title="Calibration" href="index.html"/> 
+        <link rel="prev" title="Calibration (calib)" href="index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -85,10 +85,11 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calibration</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#submodules">Submodules</a><ul class="current">
@@ -104,15 +105,16 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -143,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">Calibration</a> &raquo;</li>
+          <li><a href="index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a> &raquo;</li>
       
     <li>Array calibration</li>
       <li class="wy-breadcrumbs-aside">
@@ -202,7 +204,7 @@
         <a href="index_atmo.html" class="btn btn-neutral float-right" title="Atmosphere calibration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Calibration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Calibration (calib)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -212,7 +214,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -234,7 +236,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

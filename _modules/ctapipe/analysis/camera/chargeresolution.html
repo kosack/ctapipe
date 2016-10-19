@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ctapipe.analysis.camera.chargeresolution &mdash; ctapipe v0.1.dev1008</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/astropy_logo.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> ctapipe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.dev1008
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ctapipe.analysis.camera.chargeresolution</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ctapipe.analysis.camera.chargeresolution</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log10</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binned_statistic</span>
+
+
+<div class="viewcode-block" id="ChargeResolution"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution">[docs]</a><span class="k">class</span> <span class="nc">ChargeResolution</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to handle the calculation of Charge Resolution.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    max_pe : int</span>
+<span class="sd">        Maximum pe to calculate the charge resolution up to.</span>
+<span class="sd">    sum_dict : dict</span>
+<span class="sd">        Dictionary to store the running sum for each true charge.</span>
+<span class="sd">    n_dict : dict</span>
+<span class="sd">        Dictionary to store the running number for each true charge.</span>
+<span class="sd">    variation_hist_nbins : float</span>
+<span class="sd">        Number of bins for the variation histogram.</span>
+<span class="sd">    variation_hist_range : list</span>
+<span class="sd">        X and Y range for the variation histogram.</span>
+<span class="sd">    variation_hist : `np.histogram2d`</span>
+<span class="sd">    variation_xedges : ndarray</span>
+<span class="sd">        Edges of the X bins for the variation histogram.</span>
+<span class="sd">    variation_yedges : ndarray</span>
+<span class="sd">        Edges of the Y bins for the variation histogram.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_pe</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        max_pe : int</span>
+<span class="sd">            Maximum pe to calculate the charge resolution up to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_pe</span> <span class="o">=</span> <span class="n">max_pe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_nbins</span> <span class="o">=</span> <span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pe</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_range</span> <span class="o">=</span> <span class="p">[[</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pe</span><span class="p">)],</span>
+                                     <span class="p">[</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pe</span><span class="p">)]]</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+                                           <span class="n">bins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_nbins</span><span class="p">,</span>
+                                           <span class="nb">range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_range</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_hist</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_xedges</span> <span class="o">=</span> <span class="n">xedges</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_yedges</span> <span class="o">=</span> <span class="n">yedges</span>
+
+<div class="viewcode-block" id="ChargeResolution.add_charges"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.add_charges">[docs]</a>    <span class="k">def</span> <span class="nf">add_charges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">true_charge</span><span class="p">,</span> <span class="n">measured_charge</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fill the class parameters with a numpy array of true charge and</span>
+<span class="sd">        measured (calibrated) charge from an event. The two arrays must be the</span>
+<span class="sd">        same size.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        true_charge : ndarray</span>
+<span class="sd">            Array of true (MC) charge.</span>
+<span class="sd">        measured_charge : ndarray</span>
+<span class="sd">               Array of measured (calibrated) charge.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">true_charge</span><span class="p">[(</span><span class="n">measured_charge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">true_charge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">measured_charge</span><span class="p">[(</span><span class="n">measured_charge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">true_charge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+                                 <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+                                 <span class="n">bins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_nbins</span><span class="p">,</span>
+                                 <span class="nb">range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">variation_hist_range</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_hist</span> <span class="o">+=</span> <span class="n">h</span>
+        <span class="k">for</span> <span class="n">trueq</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">true_charge</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">trueq</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">trueq</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_pe</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">relevant_q</span> <span class="o">=</span> <span class="n">measured_charge</span><span class="p">[</span><span class="n">true_charge</span> <span class="o">==</span> <span class="n">trueq</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">trueq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span><span class="p">[</span><span class="n">trueq</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n_dict</span><span class="p">[</span><span class="n">trueq</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span><span class="p">[</span><span class="n">trueq</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">relevant_q</span> <span class="o">-</span> <span class="n">trueq</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_dict</span><span class="p">[</span><span class="n">trueq</span><span class="p">]</span> <span class="o">+=</span> <span class="n">relevant_q</span><span class="o">.</span><span class="n">size</span></div>
+
+<div class="viewcode-block" id="ChargeResolution.add_source"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.add_source">[docs]</a>    <span class="k">def</span> <span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calibrated_source</span><span class="p">,</span> <span class="n">telescopes</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fill the class parameters with a calibrated source.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        calibrated_source : ndarray</span>
+<span class="sd">            `ctapipe.calib.camera.calibrators.calibrate_source` generator.</span>
+<span class="sd">        telescopes : list</span>
+<span class="sd">               List of telescopes to include into the charge resolution.</span>
+<span class="sd">               If None, all telescopes will be included.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;[chargeres] Adding source&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">calibrated_source</span><span class="p">:</span>
+            <span class="n">tels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">telescopes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">tels</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">telescopes</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">:</span>
+                        <span class="n">tels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>
+
+            <span class="c1"># Check source has required information</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Check source is calibrated</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s1">&#39;dl1&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">KeyError</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;[chargeres] Source has not been calibrated&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span>
+
+                <span class="c1"># Check events have true charge included</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tels</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">photo_electrons</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">KeyError</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;[chargeres] Source does not &#39;</span>
+                                  <span class="s1">&#39;contain true charge&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span>
+
+            <span class="k">for</span> <span class="n">telid</span> <span class="ow">in</span> <span class="n">tels</span><span class="p">:</span>
+                <span class="n">true_charge</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">telid</span><span class="p">]</span><span class="o">.</span><span class="n">photo_electrons</span>
+                <span class="n">measured_charge</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">dl1</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">telid</span><span class="p">]</span><span class="o">.</span><span class="n">pe_charge</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_charges</span><span class="p">(</span><span class="n">true_charge</span><span class="p">,</span> <span class="n">measured_charge</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChargeResolution.get_charge_resolution"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.get_charge_resolution">[docs]</a>    <span class="k">def</span> <span class="nf">get_charge_resolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate and obtain the charge resolution graph arrays.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        true_charge : ndarray</span>
+<span class="sd">            The X axis true charges.</span>
+<span class="sd">        chargeres : ndarray</span>
+<span class="sd">            The Y axis charge resolution values.</span>
+<span class="sd">        chargeres_error : ndarray</span>
+<span class="sd">            The error on the charge resolution.</span>
+<span class="sd">        scaled_chargeres : ndarray</span>
+<span class="sd">            The Y axis charge resolution divided by the Goal.</span>
+<span class="sd">        scaled_chargeres_error : ndarray</span>
+<span class="sd">            The error on the charge resolution divided by the Goal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;[chargeres] Calculating charge resolution&#39;</span><span class="p">)</span>
+        <span class="n">true_charge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">summed_charge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sum_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="n">chargeres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">summed_charge</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_charge</span><span class="p">)</span> <span class="o">/</span> <span class="n">true_charge</span>
+        <span class="n">chargeres_error</span> <span class="o">=</span> <span class="n">chargeres</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">num</span><span class="p">))</span>
+
+        <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="p">(</span><span class="n">true_charge</span><span class="p">)</span>
+        <span class="n">scaled_chargeres</span> <span class="o">=</span> <span class="n">chargeres</span><span class="o">/</span><span class="n">scale</span>
+        <span class="n">scaled_chargeres_error</span> <span class="o">=</span> <span class="n">chargeres_error</span><span class="o">/</span><span class="n">scale</span>
+
+        <span class="k">return</span> <span class="n">true_charge</span><span class="p">,</span> <span class="n">chargeres</span><span class="p">,</span> <span class="n">chargeres_error</span><span class="p">,</span> \
+            <span class="n">scaled_chargeres</span><span class="p">,</span> <span class="n">scaled_chargeres_error</span></div>
+
+<div class="viewcode-block" id="ChargeResolution.get_binned_charge_resolution"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.get_binned_charge_resolution">[docs]</a>    <span class="k">def</span> <span class="nf">get_binned_charge_resolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logarithmic_binning</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate and obtain the charge resolution graph arrays, and bin them.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        logarithmic_binning : bool</span>
+<span class="sd">            If True, binning is performed in logarithmic space.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bin_true_charge : ndarray</span>
+<span class="sd">            The X axis true charges.</span>
+<span class="sd">        bin_chargeres : ndarray</span>
+<span class="sd">            The Y axis charge resolution values.</span>
+<span class="sd">        bin_chargeres_error : ndarray</span>
+<span class="sd">            The error on the charge resolution.</span>
+<span class="sd">        bin_scaled_chargeres : ndarray</span>
+<span class="sd">            The Y axis charge resolution divided by the Goal.</span>
+<span class="sd">        bin_scaled_chargeres_error : ndarray</span>
+<span class="sd">            The error on the charge resolution divided by the Goal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">true_charge</span><span class="p">,</span> <span class="n">chargeres</span><span class="p">,</span> <span class="n">chargeres_error</span><span class="p">,</span> <span class="n">scaled_chargeres</span><span class="p">,</span> \
+            <span class="n">scaled_chargeres_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_charge_resolution</span><span class="p">()</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">true_charge</span>
+        <span class="k">if</span> <span class="n">logarithmic_binning</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">true_charge</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">binning</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">sum_errors</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span><span class="o">/</span><span class="n">array</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="k">def</span> <span class="nf">bin_errors</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">sum_errors</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+        <span class="n">bin_true_charge</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binning</span><span class="p">(</span><span class="n">true_charge</span><span class="p">)</span>
+        <span class="n">bin_chargeres</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binning</span><span class="p">(</span><span class="n">chargeres</span><span class="p">)</span>
+        <span class="n">bin_chargeres_error</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bin_errors</span><span class="p">(</span><span class="n">chargeres_error</span><span class="p">)</span>
+        <span class="n">bin_scaled_chargeres</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binning</span><span class="p">(</span><span class="n">scaled_chargeres</span><span class="p">)</span>
+        <span class="n">bin_scaled_chargeres_error</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">bin_errors</span><span class="p">(</span><span class="n">scaled_chargeres_error</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">bin_true_charge</span><span class="p">,</span> <span class="n">bin_chargeres</span><span class="p">,</span> <span class="n">bin_chargeres_error</span><span class="p">,</span> \
+            <span class="n">bin_scaled_chargeres</span><span class="p">,</span> <span class="n">bin_scaled_chargeres_error</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ChargeResolution.limit_curves"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.limit_curves">[docs]</a>    <span class="k">def</span> <span class="nf">limit_curves</span><span class="p">(</span><span class="n">npe</span><span class="p">,</span> <span class="n">n_nsb</span><span class="p">,</span> <span class="n">n_add</span><span class="p">,</span> <span class="n">enf</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Equation for calculating the Goal and Requirement curves, as defined</span>
+<span class="sd">        in SCI-MC/121113.</span>
+<span class="sd">        https://portal.cta-observatory.org/recordscentre/Records/SCI/</span>
+<span class="sd">        SCI-MC/measurment_errors_system_performance_1YQCBC.pdf</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        npe : ndarray</span>
+<span class="sd">            Number of photoeletrons (variable).</span>
+<span class="sd">        n_nsb : float</span>
+<span class="sd">            Number of NSB photons.</span>
+<span class="sd">        n_add : float</span>
+<span class="sd">            Number of photoelectrons from additional noise sources.</span>
+<span class="sd">        enf : float</span>
+<span class="sd">            Excess noise factor.</span>
+<span class="sd">        sigma2 : float</span>
+<span class="sd">            Percentage ofmultiplicative errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n_nsb</span> <span class="o">+</span> <span class="n">n_add</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">enf</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">npe</span> <span class="o">+</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">sigma2</span> <span class="o">*</span> <span class="n">npe</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">npe</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ChargeResolution.requirement"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.requirement">[docs]</a>    <span class="k">def</span> <span class="nf">requirement</span><span class="p">(</span><span class="n">npe</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CTA requirement curve.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        npe : ndarray</span>
+<span class="sd">            Number of photoeletrons (variable).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_nsb</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">3.0</span><span class="p">)</span>
+        <span class="n">n_add</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">enf</span> <span class="o">=</span> <span class="mf">1.2</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">defined_npe</span> <span class="o">=</span> <span class="mi">1000</span>
+
+        <span class="c1"># If npe is not an array, temporarily convert it to one</span>
+        <span class="n">npe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">npe</span><span class="p">])</span>
+
+        <span class="n">requirement</span> <span class="o">=</span> <span class="n">ChargeResolution</span><span class="o">.</span><span class="n">limit_curves</span><span class="p">(</span><span class="n">npe</span><span class="p">,</span> <span class="n">n_nsb</span><span class="p">,</span> <span class="n">n_add</span><span class="p">,</span> <span class="n">enf</span><span class="p">,</span>
+                                                    <span class="n">sigma2</span><span class="p">)</span>
+        <span class="n">requirement</span><span class="p">[</span><span class="n">npe</span> <span class="o">&gt;</span> <span class="n">defined_npe</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="k">return</span> <span class="n">requirement</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ChargeResolution.goal"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.goal">[docs]</a>    <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="n">npe</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CTA goal curve.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        npe : ndarray</span>
+<span class="sd">            Number of photoeletrons (variable).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_nsb</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">n_add</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">enf</span> <span class="o">=</span> <span class="mf">1.1152</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="mf">0.05</span>
+        <span class="n">defined_npe</span> <span class="o">=</span> <span class="mi">2000</span>
+
+        <span class="c1"># If npe is not an array, temporarily convert it to one</span>
+        <span class="n">npe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">npe</span><span class="p">])</span>
+
+        <span class="n">goal</span> <span class="o">=</span> <span class="n">ChargeResolution</span><span class="o">.</span><span class="n">limit_curves</span><span class="p">(</span><span class="n">npe</span><span class="p">,</span> <span class="n">n_nsb</span><span class="p">,</span> <span class="n">n_add</span><span class="p">,</span> <span class="n">enf</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">)</span>
+        <span class="n">goal</span><span class="p">[</span><span class="n">npe</span> <span class="o">&gt;</span> <span class="n">defined_npe</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="k">return</span> <span class="n">goal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ChargeResolution.poisson"><a class="viewcode-back" href="../../../../api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.poisson">[docs]</a>    <span class="k">def</span> <span class="nf">poisson</span><span class="p">(</span><span class="n">npe</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Poisson limit curve.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        npe : ndarray</span>
+<span class="sd">            Number of photoeletrons (variable).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If npe is not an array, temporarily convert it to one</span>
+        <span class="n">npe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">npe</span><span class="p">])</span>
+        <span class="n">poisson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">npe</span><span class="p">)</span> <span class="o">/</span> <span class="n">npe</span>
+
+        <span class="k">return</span> <span class="n">poisson</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, ctapipe developers.
+      Last updated on 19 Oct 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.1.dev1008',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

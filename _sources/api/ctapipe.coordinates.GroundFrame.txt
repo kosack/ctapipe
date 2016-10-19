@@ -21,7 +21,7 @@ GroundFrame
       ~GroundFrame.frame_attributes
       ~GroundFrame.frame_specific_representation_info
       ~GroundFrame.name
-      ~GroundFrame.observatory_location
+      ~GroundFrame.pointing_direction
 
    
    
@@ -40,7 +40,7 @@ GroundFrame
    .. autoattribute:: frame_attributes
    .. autoattribute:: frame_specific_representation_info
    .. autoattribute:: name
-   .. autoattribute:: observatory_location
+   .. autoattribute:: pointing_direction
 
    
    

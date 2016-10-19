@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.hessio &mdash; ctapipe v0.0.dev602</title>
+  <title>ctapipe.io.hessio &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -83,19 +83,21 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -149,8 +151,8 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="kn">from</span> <span class="nn">.containers</span> <span class="kn">import</span> <span class="n">RawData</span>
-<span class="kn">from</span> <span class="nn">.containers</span> <span class="kn">import</span> <span class="n">RawCameraData</span><span class="p">,</span> <span class="n">MCEvent</span><span class="p">,</span> <span class="n">CentralTriggerData</span>
+<span class="kn">from</span> <span class="nn">.containers</span> <span class="kn">import</span> <span class="n">EventContainer</span><span class="p">,</span> <span class="n">RawData</span>
+<span class="kn">from</span> <span class="nn">.containers</span> <span class="kn">import</span> <span class="n">RawCameraData</span><span class="p">,</span> <span class="n">MCEvent</span><span class="p">,</span> <span class="n">MCCamera</span><span class="p">,</span> <span class="n">CentralTriggerData</span>
 <span class="kn">from</span> <span class="nn">ctapipe.core</span> <span class="kn">import</span> <span class="n">Container</span>
 
 <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
@@ -195,88 +197,105 @@
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;hessio_event_source failed to open &#39;{}&#39;&quot;</span>
                            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
 
+    <span class="c1"># the container is initialized once, and data is replaced within</span>
+    <span class="c1"># it after each yield</span>
+
     <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">eventstream</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">move_to_next_event</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">allowed_tels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">allowed_tels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">allowed_tels</span><span class="p">)</span>
-    <span class="n">container</span> <span class="o">=</span> <span class="n">Container</span><span class="p">(</span><span class="s2">&quot;hessio_container&quot;</span><span class="p">)</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;hessio__input&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;hessio__max_events&#39;</span><span class="p">,</span> <span class="n">max_events</span><span class="p">)</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;pixel_pos&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;optical_foclen&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;dl0&quot;</span><span class="p">,</span> <span class="n">RawData</span><span class="p">())</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;mc&quot;</span><span class="p">,</span> <span class="n">MCEvent</span><span class="p">())</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;trig&quot;</span><span class="p">,</span> <span class="n">CentralTriggerData</span><span class="p">())</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
-    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;tel_pos&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
-    
+    <span class="n">event</span> <span class="o">=</span> <span class="n">EventContainer</span><span class="p">()</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;hessio&quot;</span>
+
+    <span class="c1"># some hessio_event_source specific parameters</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;hessio__input&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s1">&#39;hessio__max_events&#39;</span><span class="p">,</span> <span class="n">max_events</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">event_id</span> <span class="ow">in</span> <span class="n">eventstream</span><span class="p">:</span>
 
-        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">run_id</span> <span class="o">=</span> <span class="n">run_id</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">event_id</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_teldata_list</span><span class="p">())</span>
-
+        <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">run_id</span> <span class="o">=</span> <span class="n">run_id</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">event_id</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_teldata_list</span><span class="p">())</span>
+        
         <span class="c1"># handle telescope filtering by taking the intersection of</span>
         <span class="c1"># tels_with_data and allowed_tels</span>
         <span class="k">if</span> <span class="n">allowed_tels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">selected</span> <span class="o">=</span> <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">&amp;</span> <span class="n">allowed_tels</span>
+            <span class="n">selected</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">&amp;</span> <span class="n">allowed_tels</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">continue</span>  <span class="c1"># skip event</span>
-            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="n">selected</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="n">selected</span>
 
-        <span class="n">container</span><span class="o">.</span><span class="n">trig</span><span class="o">.</span><span class="n">tels_with_trigger</span> \
+        <span class="n">event</span><span class="o">.</span><span class="n">trig</span><span class="o">.</span><span class="n">tels_with_trigger</span> \
             <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_central_event_teltrg_list</span><span class="p">()</span>
         <span class="n">time_s</span><span class="p">,</span> <span class="n">time_ns</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_central_event_gps_time</span><span class="p">()</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">trig</span><span class="o">.</span><span class="n">gps_time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">time_s</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">time_ns</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span>
-                                       <span class="n">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;utc&#39;</span><span class="p">)</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_energy</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">alt</span> <span class="o">=</span> <span class="n">Angle</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_altitude</span><span class="p">(),</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">az</span> <span class="o">=</span> <span class="n">Angle</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_azimuth</span><span class="p">(),</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">core_x</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_event_xcore</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
-        <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">core_y</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_event_ycore</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">trig</span><span class="o">.</span><span class="n">gps_time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">time_s</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">time_ns</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span>
+                                   <span class="n">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;utc&#39;</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_energy</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">alt</span> <span class="o">=</span> <span class="n">Angle</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_altitude</span><span class="p">(),</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">az</span> <span class="o">=</span> <span class="n">Angle</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_azimuth</span><span class="p">(),</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">core_x</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_event_xcore</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">core_y</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_event_ycore</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">h_first_int</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_shower_h_first_int</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 
-        <span class="n">container</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">counter</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">counter</span>
 
         <span class="c1"># this should be done in a nicer way to not re-allocate the</span>
         <span class="c1"># data each time (right now it&#39;s just deleted and garbage</span>
         <span class="c1"># collected)</span>
 
-        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># clear the previous telescopes</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># clear the previous telescopes</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># clear the previous telescopes</span>
 
-        <span class="k">for</span> <span class="n">tel_id</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">tel_id</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">:</span>
 
             <span class="c1"># fill pixel position dictionary, if not already done:</span>
-            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">:</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> \
+            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">:</span>
+                <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> \
                     <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_pixel_position</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">optical_foclen</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_optical_foclen</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">;</span>
-
-            <span class="c1"># fill the photo electrons list</span>
-            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">photo_electrons</span><span class="p">:</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">photo_electrons</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">pix_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pyhessio</span><span class="o">.</span><span class="n">get_num_pixels</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)):</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">photo_electrons</span><span class="p">[</span><span class="n">tel_id</span><span class="p">][</span><span class="n">pix_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_number_photon_electron</span><span class="p">(</span><span class="n">tel_id</span><span class="p">,</span> <span class="n">pix_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">optical_foclen</span><span class="p">[</span>
+                    <span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_optical_foclen</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 
             <span class="c1"># fill telescope position dictionary, if not already done:</span>
-            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">tel_pos</span><span class="p">:</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">tel_pos</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_telescope_position</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">tel_pos</span><span class="p">:</span>
+                <span class="n">event</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">tel_pos</span><span class="p">[</span>
+                    <span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_telescope_position</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 
             <span class="n">nchans</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_num_channel</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
-            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">RawCameraData</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
-            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">num_channels</span> <span class="o">=</span> <span class="n">nchans</span>
+            <span class="n">npix</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_num_pixels</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">nsamples</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_num_samples</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">RawCameraData</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">num_channels</span> <span class="o">=</span> <span class="n">nchans</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">num_pixels</span> <span class="o">=</span> <span class="n">npix</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">=</span> <span class="n">nsamples</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">MCCamera</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">calibration</span> \
+                <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_calibration</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">pedestal</span> \
+                <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_pedestal</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
 
             <span class="c1"># load the data per telescope/chan</span>
             <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nchans</span><span class="p">):</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_samples</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
+                <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_samples</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
                     <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_adc_sample</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span>
                                               <span class="n">telescope_id</span><span class="o">=</span><span class="n">tel_id</span><span class="p">)</span>
-                <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_sums</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
+                <span class="n">event</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_sums</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
                     <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_adc_sum</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span>
                                            <span class="n">telescope_id</span><span class="o">=</span><span class="n">tel_id</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="n">container</span>
+                <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">refshapes</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_ref_shapes</span><span class="p">(</span><span class="n">tel_id</span><span class="p">,</span> <span class="n">chan</span><span class="p">)</span>
+
+            <span class="c1"># load the data per telescope/pixel</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">photo_electrons</span> \
+                <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_mc_number_photon_electron</span><span class="p">(</span><span class="n">telescope_id</span><span class="o">=</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">refstep</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_ref_step</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">lrefshape</span> <span class="o">=</span> <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_lrefshape</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">time_slice</span> <span class="o">=</span> \
+                <span class="n">pyhessio</span><span class="o">.</span><span class="n">get_time_slice</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">event</span>
         <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="k">if</span> <span class="n">max_events</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="n">max_events</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">max_events</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">&gt;=</span> <span class="n">max_events</span><span class="p">:</span>
             <span class="k">return</span></div>
 </pre></div>
 
@@ -290,7 +309,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -312,7 +331,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

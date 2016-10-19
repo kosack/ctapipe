@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; ctapipe v0.0.dev602</title>
+  <title>Getting Started For Developers &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="next" title="Development Resources" href="../development/index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="next" title="Development Guidelines" href="../development/index.html"/>
         <link rel="prev" title="CTA Experimental Pipeline Framework (ctapipe)" href="../index.html"/> 
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -84,24 +84,31 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started For Developers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#set-up-your-environment">Set up your environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-the-ctapipe-software">Get the ctapipe software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#developing-code">Developing Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-ctapipe-software">Get the ctapipe software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-fork">Step 1: Fork</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-clone">Step 2: clone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-setup">Step 3: Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-development-help">More Development help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -132,7 +139,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Getting Started</li>
+    <li>Getting Started For Developers</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -146,10 +153,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
-<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>This guide assumes you are using the <em>Anaconda</em> python distribution, installed locally (<em>miniconda</em> should also work).</p>
-<p>First you should create a virtual environment in which to do your developement (this will allow you to control the dependency libraries independently of other projects). You can use either python 3.4 or python 3.5. Here we will create a virtualenv called &#8220;cta&#8221; (but you can choose another name if you like)</p>
+  <div class="section" id="getting-started-for-developers">
+<span id="getting-started"></span><h1>Getting Started For Developers<a class="headerlink" href="#getting-started-for-developers" title="Permalink to this headline">¶</a></h1>
+<p>This guide assumes you are using the <em>Anaconda</em> python distribution,
+installed locally (<em>miniconda</em> should also work).</p>
+<p>First you should create a virtual environment in which to do your
+development (this will allow you to control the dependent libraries
+independently of other projects). You can use either python 3.4 or
+python 3.5. Here we will create a virtualenv called &quot;cta&quot; (but you can
+choose another name if you like)</p>
 <div class="section" id="set-up-your-environment">
 <h2>Set up your environment<a class="headerlink" href="#set-up-your-environment" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>conda create -n cta <span class="nv">python</span><span class="o">=</span>3.5 astropy matplotlib scipy scikit-learn numba cython
@@ -158,8 +170,8 @@
 <p>Next, switch to this new virtual environment and install some other useful tools for development:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> activate cta
 
-conda install ipython ipython-notebook ipython-qtconsole spyder pyflakes
-pip install autopep8
+conda install ipython ipython-notebook ipython-qtconsole spyder pyflakes traitlets
+conda install -c conda-forge autopep8 graphviz
 </pre></div>
 </div>
 <p>Next, you should create a directory where you can store the software you check out. For example:</p>
@@ -176,18 +188,40 @@ conda install --use-local pyhessio
 </div>
 <div class="section" id="get-the-ctapipe-software">
 <h2>Get the ctapipe software<a class="headerlink" href="#get-the-ctapipe-software" title="Permalink to this headline">¶</a></h2>
-<p>Next, check out the <a class="reference external" href="https://github.com/cta-observatory/ctapipe">ctapipe</a> repo:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/cta-observatory/ctapipe.git   <span class="c1"># if you like HTTPS</span>
+<p>In order to checkout the software in such a way that you can read <em>and
+commit</em> changes, you need to <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">Fork and Clone</a> the main ctapipe
+repository (cta-observatory/ctapipe).</p>
+<div class="section" id="step-1-fork">
+<h3>Step 1: Fork<a class="headerlink" href="#step-1-fork" title="Permalink to this headline">¶</a></h3>
+<p>Follow the instructions in the link above to make a <em>fork</em> of the
+ctapipe repo in your own GitHub userspace. That fork will be then
+called <em>yourusername</em>/ctapipe (it's as simple as clicking the fork button on <a class="reference external" href="https://github.com/cta-observatory/ctapipe">main ctapipe github page</a>.</p>
+</div>
+<div class="section" id="step-2-clone">
+<h3>Step 2: clone<a class="headerlink" href="#step-2-clone" title="Permalink to this headline">¶</a></h3>
+<p>Next, you need to clone (copy to your local machine) the newly forked
+ctapipe repo (make sure you put in your own username there):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/<span class="o">[</span>YOUR-GITHUB-USERNAME<span class="o">]</span>/ctapipe.git
+<span class="nb">cd</span> ctapipe
 </pre></div>
 </div>
-<p>Now setup this checked out version for development:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ctapipe
-make init     <span class="c1"># will fetch required sub-repos and set up package</span>
+<p>You now need to tell Git that this repo where the master CTA version is:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git remote add upstream https://github.com/cta-observatory/ctapipe.git
+</pre></div>
+</div>
+<p>If that worked, then you should see a <em>upstream</em> target in
+addition to <em>origin</em> when typing <code class="xref py py-obj docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code>.  Later if you want
+to pull in any changes from the master repo, you just need to type
+<code class="xref py py-obj docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span> <span class="pre">master</span></code>.</p>
+</div>
+<div class="section" id="step-3-setup">
+<h3>Step 3: Setup<a class="headerlink" href="#step-3-setup" title="Permalink to this headline">¶</a></h3>
+<p>Now setup this cloned version for development:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>make init     <span class="c1"># will fetch required sub-repos and set up package</span>
 make develop  <span class="c1"># will make symlinks in your python library dir</span>
 </pre></div>
 </div>
-<p>Make sure the tests and examples code finds the test and example files.
-Run the tests to make sure everything is OK:</p>
+<p>Run the tests to make sure everything is OK:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>make <span class="nb">test</span>
 </pre></div>
 </div>
@@ -201,21 +235,31 @@ python xxx_example.py
 </pre></div>
 </div>
 <p>Run the command line tools:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
-ctapipe-info --tools
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ctapipe-info --tools
 </pre></div>
 </div>
 <p>To update to the latest development version (merging in remote changes
 to your local working copy):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git pull
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git pull upstream master
 </pre></div>
 </div>
 </div>
-<div class="section" id="developing-code">
-<h2>Developing Code<a class="headerlink" href="#developing-code" title="Permalink to this headline">¶</a></h2>
-<p>Checking out ctapipe in the manner described above is read-only, meaning that if you want to commit a change, you cannot (the master repo is locked to only the managers). Therefore, in order to develop, you need to make a personal fork on GitHub.
-This is described in the AstroPy documentation <a class="reference external" href="http://astropy.readthedocs.org/en/latest/development/workflow/get_devel_version.html#get-devel">http://astropy.readthedocs.org/en/latest/development/workflow/get_devel_version.html#get-devel</a> .  You would need to of course change any reference to &#8220;astropy&#8221; the package to &#8220;ctapipe&#8221; and &#8220;astropy&#8221; the organization to &#8220;cta-observatory&#8221;, but the instructions should work.</p>
-<p>Even easier (if you are on a Mac computer) is to use the <a class="reference external" href="https://desktop.github.com/">github-desktop GUI</a>, which can do all of it for you automatically. It will handle the forking, syncing, and even allow you to issue pull-requests.</p>
+</div>
+<div class="section" id="more-development-help">
+<h2>More Development help<a class="headerlink" href="#more-development-help" title="Permalink to this headline">¶</a></h2>
+<p>More information on how to develop code using the GitHub-FLow workflow
+(which is what we are using) can be found in the AstroPy documentation
+<a class="reference external" href="http://astropy.readthedocs.org/en/latest/development/workflow/get_devel_version.html#get-devel">http://astropy.readthedocs.org/en/latest/development/workflow/get_devel_version.html#get-devel</a>
+.  You would need to of course change any reference to &quot;astropy&quot; the
+package to &quot;ctapipe&quot; and &quot;astropy&quot; the organization to
+&quot;cta-observatory&quot;, but the instructions should work.</p>
+<p>Even easier (if you are on a Mac computer) is to use the
+<a class="reference external" href="https://desktop.github.com/">github-desktop GUI</a>, which can do most
+of the fork/clone and remote git commands above automatically. It
+provides a graphical view of your fork and the upstream
+cta-observatory repository, so you can see easily what version you are
+working on. It will handle the forking, syncing, and even allow you to
+issue pull-requests.</p>
 </div>
 </div>
 
@@ -226,7 +270,7 @@ This is described in the AstroPy documentation <a class="reference external" hre
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../development/index.html" class="btn btn-neutral float-right" title="Development Resources" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../development/index.html" class="btn btn-neutral float-right" title="Development Guidelines" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="CTA Experimental Pipeline Framework (ctapipe)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -239,7 +283,7 @@ This is described in the AstroPy documentation <a class="reference external" hre
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -261,7 +305,7 @@ This is described in the AstroPy documentation <a class="reference external" hre
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

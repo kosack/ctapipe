@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TiltedGroundFrame &mdash; ctapipe v0.0.dev602</title>
+  <title>TiltedGroundFrame &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
-        <link rel="next" title="Core Data Structures" href="../core/index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="up" title="Coordinates (coordinates)" href="../coordinates/index.html"/>
+        <link rel="next" title="Core Structures and Base Classes (core)" href="../core/index.html"/>
         <link rel="prev" title="TelescopeFrame" href="ctapipe.coordinates.TelescopeFrame.html"/> 
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -85,12 +85,12 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a><ul class="current">
@@ -103,13 +103,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -140,7 +142,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../coordinates/index.html">Coordinates</a> &raquo;</li>
+          <li><a href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a> &raquo;</li>
       
     <li>TiltedGroundFrame</li>
       <li class="wy-breadcrumbs-aside">
@@ -160,16 +162,18 @@
 <h1>TiltedGroundFrame<a class="headerlink" href="#tiltedgroundframe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.coordinates.TiltedGroundFrame">
-<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">TiltedGroundFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.coordinates.TiltedGroundFrame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">TiltedGroundFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#TiltedGroundFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.TiltedGroundFrame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
-<p>Tilted ground coordinate frame.
-The tilted ground coordinate frame is a cartesian system describing the
-2 dimensional projected positions of objects in a tilted plane described
-by pointing_direction
-Typically this frame will be used for the reconstruction of the shower core
-position</p>
-<p>Frame attributes:
-pointing_direction - Alt,Az direction of the tilted reference plane</p>
+<p>Tilted ground coordinate frame.  The tilted ground coordinate frame
+is a cartesian system describing the 2 dimensional projected
+positions of objects in a tilted plane described by
+pointing_direction Typically this frame will be used for the
+reconstruction of the shower core position</p>
+<p>Frame attributes:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">pointing_direction</span></code> 
+Alt,Az direction of the tilted reference plane</li>
+</ul>
 <p class="rubric">Attributes Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -202,7 +206,7 @@ pointing_direction - Alt,Az direction of the tilted reference plane</p>
 
 <dl class="attribute">
 <dt id="ctapipe.coordinates.TiltedGroundFrame.frame_attributes">
-<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('pointing_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x1132f84a8&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.TiltedGroundFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('pointing_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.TiltedGroundFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -231,7 +235,7 @@ pointing_direction - Alt,Az direction of the tilted reference plane</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../core/index.html" class="btn btn-neutral float-right" title="Core Data Structures" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../core/index.html" class="btn btn-neutral float-right" title="Core Structures and Base Classes (core)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ctapipe.coordinates.TelescopeFrame.html" class="btn btn-neutral" title="TelescopeFrame" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -244,7 +248,7 @@ pointing_direction - Alt,Az direction of the tilted reference plane</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -266,7 +270,7 @@ pointing_direction - Alt,Az direction of the tilted reference plane</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

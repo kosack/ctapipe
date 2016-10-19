@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NominalFrame &mdash; ctapipe v0.0.dev602</title>
+  <title>NominalFrame &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="up" title="Coordinates (coordinates)" href="../coordinates/index.html"/>
         <link rel="next" title="TelescopeFrame" href="ctapipe.coordinates.TelescopeFrame.html"/>
         <link rel="prev" title="GroundFrame" href="ctapipe.coordinates.GroundFrame.html"/> 
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -85,12 +85,12 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a><ul class="current">
@@ -103,13 +103,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -140,7 +142,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../coordinates/index.html">Coordinates</a> &raquo;</li>
+          <li><a href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a> &raquo;</li>
       
     <li>NominalFrame</li>
       <li class="wy-breadcrumbs-aside">
@@ -160,21 +162,28 @@
 <h1>NominalFrame<a class="headerlink" href="#nominalframe" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.coordinates.NominalFrame">
-<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">NominalFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.coordinates.NominalFrame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">NominalFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#NominalFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.NominalFrame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
-<p>Nominal coordinate frame.
-Cartesian system to describe the angular offset of a given position in reference to
-pointing direction of a nominal array pointing position. In most cases this frame is the
-same as the telescope frame, however in the case of divergent pointing they will differ.
-Event reconstruction should be performed in this system</p>
-<p>Frame attributes:
-- Pointing Direction: Alt,Az direction of the array pointing</p>
-<p>The Following attributes are carried over from the telescope frame to allow a direct
-transformation from the camera frame</p>
+<p>Nominal coordinate frame.  Cartesian system to describe the angular
+offset of a given position in reference to pointing direction of a
+nominal array pointing position. In most cases this frame is the
+same as the telescope frame, however in the case of divergent
+pointing they will differ.  Event reconstruction should be
+performed in this system</p>
+<p>Frame attributes:</p>
 <ul class="simple">
-<li>Focal length: Focal length of the telescope [m]</li>
-<li>Rotation: Rotation angle of the camera (should be 0 in most cases) [deg]</li>
-<li>Pointing Direction: Alt,Az direction of the telescope pointing</li>
+<li><code class="docutils literal"><span class="pre">pointing_direction</span></code>
+Alt,Az direction of the array pointing</li>
+</ul>
+<p>The Following attributes are carried over from the telescope frame
+to allow a direct transformation from the camera frame</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">focal_length</span></code>
+Focal length of the telescope</li>
+<li><code class="docutils literal"><span class="pre">rotation</span></code>
+Rotation angle of the camera (0 in most cases) [deg]</li>
+<li><code class="docutils literal"><span class="pre">pointing_direction</span></code>
+Alt,Az direction of the telescope pointing</li>
 </ul>
 <p class="rubric">Attributes Summary</p>
 <table border="1" class="longtable docutils">
@@ -227,7 +236,7 @@ transformation from the camera frame</p>
 
 <dl class="attribute">
 <dt id="ctapipe.coordinates.NominalFrame.frame_attributes">
-<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('array_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x1132f82e8&gt;), ('pointing_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x1132f8320&gt;), ('rotation', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x1132f8358&gt;), ('focal_length', &lt;astropy.coordinates.baseframe.FrameAttribute object at 0x1132f8390&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.NominalFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">frame_attributes</code><em class="property"> = OrderedDict([('array_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object&gt;), ('pointing_direction', &lt;astropy.coordinates.baseframe.FrameAttribute object&gt;), ('rotation', &lt;astropy.coordinates.baseframe.FrameAttribute object&gt;), ('focal_length', &lt;astropy.coordinates.baseframe.FrameAttribute object&gt;)])</em><a class="headerlink" href="#ctapipe.coordinates.NominalFrame.frame_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -274,7 +283,7 @@ transformation from the camera frame</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -296,7 +305,7 @@ transformation from the camera frame</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

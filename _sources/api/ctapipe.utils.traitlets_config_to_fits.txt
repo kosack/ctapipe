@@ -1,0 +1,8 @@
+
+
+traitlets_config_to_fits
+======================================
+
+.. currentmodule:: ctapipe.utils
+
+.. autofunction:: traitlets_config_to_fits

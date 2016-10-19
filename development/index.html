@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development Resources &mdash; ctapipe v0.0.dev602</title>
+  <title>Development Guidelines &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
         <link rel="next" title="Style Guide" href="style-guide.html"/>
-        <link rel="prev" title="Getting Started" href="../getting_started/index.html"/> 
+        <link rel="prev" title="Getting Started For Developers" href="../getting_started/index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -84,26 +84,28 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Development Resources</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development Guidelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pullrequests.html">Making and Accepting Pull Requests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -134,7 +136,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Development Resources</li>
+    <li>Development Guidelines</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -148,18 +150,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="development-resources">
-<h1>Development Resources<a class="headerlink" href="#development-resources" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="development-guidelines">
+<h1>Development Guidelines<a class="headerlink" href="#development-guidelines" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="style-guide.html">Style Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="style-guide.html#coding-style">Coding Style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="style-guide.html#api-documentation-style">API Documentation Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html#interactive-development-environment">Interactive Development Environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="code-guidelines.html">Code Guidelines</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#useful-references-for-good-coding-practices">Useful references for good coding practices:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#references-for-good-coding-practices">References for good coding practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#data-structures">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#logging-and-debugging">Logging and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#function-or-method-input-output">Function or method Input/Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#unit-quantities">Unit Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#unit-tests">Unit-tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-guidelines.html#writing-algorithms">Writing Algorithms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="support-libraries.html">Support Libraries</a><ul>
@@ -169,8 +177,9 @@
 <li class="toctree-l2"><a class="reference internal" href="support-libraries.html#fits-table-access">FITS Table Access</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="futureplans.html">Future Plans</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="futureplans.html#parallelization">Parallelization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequests.html">Making and Accepting Pull Requests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pullrequests.html#making-a-pull-request">Making a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pullrequests.html#accepting-a-pull-request">Accepting a Pull Request</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="maintainer-info.html">Maintainer info</a><ul>
@@ -192,7 +201,7 @@
         <a href="style-guide.html" class="btn btn-neutral float-right" title="Style Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../getting_started/index.html" class="btn btn-neutral" title="Getting Started" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../getting_started/index.html" class="btn btn-neutral" title="Getting Started For Developers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -202,7 +211,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -224,7 +233,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

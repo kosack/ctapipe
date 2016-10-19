@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev602</title>
+  <title>CameraDisplay &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="up" title="Visualization" href="../visualization/index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="up" title="Visualization (visualization)" href="../visualization/index.html"/>
         <link rel="prev" title="ArrayDisplay" href="ctapipe.visualization.ArrayDisplay.html"/> 
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -84,19 +84,21 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a><ul class="current">
@@ -138,7 +140,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../visualization/index.html">Visualization</a> &raquo;</li>
+          <li><a href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a> &raquo;</li>
       
     <li>CameraDisplay</li>
       <li class="wy-breadcrumbs-aside">
@@ -173,26 +175,24 @@
 <blockquote>
 <div><p>array of values corresponding to the pixels in the CameraGeometry.</p>
 </div></blockquote>
-<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
+<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
 <blockquote>
 <div><p>A matplotlib axes object to plot on, or None to create a new one</p>
 </div></blockquote>
-<p><strong>title</strong> : str (default &#8220;Camera&#8221;)</p>
+<p><strong>title</strong> : str (default &quot;Camera&quot;)</p>
 <blockquote>
 <div><p>Title to put on camera plot</p>
 </div></blockquote>
-<p><strong>norm</strong> : str or <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.color.Normalize</span></code> instance (default &#8216;lin&#8217;)</p>
+<p><strong>norm</strong> : str or <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.color.Normalize</span></code> instance (default 'lin')</p>
 <blockquote>
 <div><p>Normalization for the color scale.
-Supported str arguments are</p>
-<blockquote>
-<div><p>&#8216;lin&#8217;: linear scale
-&#8216;log&#8217;: logarithmic scale (base 10)</p>
+Supported str arguments are
+- 'lin': linear scale
+- 'log': logarithmic scale (base 10)</p>
 </div></blockquote>
-</div></blockquote>
-<p><strong>cmap</strong> : str or <a class="reference external" href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code></a> (default &#8216;hot&#8217;)</p>
+<p><strong>cmap</strong> : str or <a class="reference external" href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code></a> (default 'hot')</p>
 <blockquote>
-<div><p>Color map to use (see <a class="reference external" href="http://matplotlib.org/api/cm_api.html#module-matplotlib.cm" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.cm</span></code></a>)</p>
+<div><p>Color map to use (see <a class="reference external" href="http://matplotlib.org/api/cm_api.html#module-matplotlib.cm" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.cm</span></code></a>)</p>
 </div></blockquote>
 <p><strong>allow_pick</strong> : bool (default False)</p>
 <blockquote>
@@ -229,7 +229,7 @@ instance, and change the data, rather than generating new
 CameraDisplays.</dd>
 <dt>Pixel Implementation:</dt>
 <dd>Pixels are rendered as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
 or 4 sided).  You can access the PatchCollection directly (to
 e.g. change low-level style parameters) via
 <code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay.pixels</span></code></dd>
@@ -246,13 +246,13 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.cmap" title="ctapipe.visualization.CameraDisplay.cmap"><code class="xref py py-obj docutils literal"><span class="pre">cmap</span></code></a></td>
-<td></td>
+<td>Color map to use.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.image" title="ctapipe.visualization.CameraDisplay.image"><code class="xref py py-obj docutils literal"><span class="pre">image</span></code></a></td>
-<td></td>
+<td>The image displayed on the camera (1D array of pixel values)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.norm" title="ctapipe.visualization.CameraDisplay.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a></td>
-<td>The norm instance of the Display Possible values:     &#8220;lin&#8221;: linear scale     &#8220;log&#8221;: log scale     any matplotlib.colors.Normalize instance, e.</td>
+<td>The norm instance of the Display</td>
 </tr>
 </tbody>
 </table>
@@ -272,22 +272,25 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 <tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.enable_pixel_picker" title="ctapipe.visualization.CameraDisplay.enable_pixel_picker"><code class="xref py py-obj docutils literal"><span class="pre">enable_pixel_picker</span></code></a>()</td>
 <td>enable ability to click on pixels</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.on_pixel_clicked" title="ctapipe.visualization.CameraDisplay.on_pixel_clicked"><code class="xref py py-obj docutils literal"><span class="pre">on_pixel_clicked</span></code></a>(pix_id)</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.highlight_pixels" title="ctapipe.visualization.CameraDisplay.highlight_pixels"><code class="xref py py-obj docutils literal"><span class="pre">highlight_pixels</span></code></a>(pixels[,&nbsp;color,&nbsp;linewidth,&nbsp;...])</td>
+<td>Highlight the given pixels with a colored line around them</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.on_pixel_clicked" title="ctapipe.visualization.CameraDisplay.on_pixel_clicked"><code class="xref py py-obj docutils literal"><span class="pre">on_pixel_clicked</span></code></a>(pix_id)</td>
 <td>virtual function to overide in sub-classes to do something special</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.overlay_moments" title="ctapipe.visualization.CameraDisplay.overlay_moments"><code class="xref py py-obj docutils literal"><span class="pre">overlay_moments</span></code></a>(momparams,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.overlay_moments" title="ctapipe.visualization.CameraDisplay.overlay_moments"><code class="xref py py-obj docutils literal"><span class="pre">overlay_moments</span></code></a>(momparams,&nbsp;**kwargs)</td>
 <td>helper to overlay ellipse from a <code class="xref py py-obj docutils literal"><span class="pre">reco.MomentParameters</span></code> structure</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.set_limits_minmax" title="ctapipe.visualization.CameraDisplay.set_limits_minmax"><code class="xref py py-obj docutils literal"><span class="pre">set_limits_minmax</span></code></a>(zmin,&nbsp;zmax)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.set_limits_minmax" title="ctapipe.visualization.CameraDisplay.set_limits_minmax"><code class="xref py py-obj docutils literal"><span class="pre">set_limits_minmax</span></code></a>(zmin,&nbsp;zmax)</td>
 <td>set the color scale limits from min to max</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.set_limits_percent" title="ctapipe.visualization.CameraDisplay.set_limits_percent"><code class="xref py py-obj docutils literal"><span class="pre">set_limits_percent</span></code></a>([percent])</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.set_limits_percent" title="ctapipe.visualization.CameraDisplay.set_limits_percent"><code class="xref py py-obj docutils literal"><span class="pre">set_limits_percent</span></code></a>([percent])</td>
 <td>auto-scale the color range to percent of maximum</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.show" title="ctapipe.visualization.CameraDisplay.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.show" title="ctapipe.visualization.CameraDisplay.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>()</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.update" title="ctapipe.visualization.CameraDisplay.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([force])</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.update" title="ctapipe.visualization.CameraDisplay.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([force])</td>
 <td>signal a redraw if necessary</td>
 </tr>
 </tbody>
@@ -296,22 +299,26 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 <dl class="attribute">
 <dt id="ctapipe.visualization.CameraDisplay.cmap">
 <code class="descname">cmap</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.cmap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Color map to use. Either a name or  <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.colors.ColorMap</span></code>
+instance, e.g. from <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.cm</span></code></p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ctapipe.visualization.CameraDisplay.image">
 <code class="descname">image</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.image" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The image displayed on the camera (1D array of pixel values)</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ctapipe.visualization.CameraDisplay.norm">
 <code class="descname">norm</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.norm" title="Permalink to this definition">¶</a></dt>
-<dd><p>The norm instance of the Display
-Possible values:</p>
-<blockquote>
-<div>&#8220;lin&#8221;: linear scale
-&#8220;log&#8221;: log scale
-any matplotlib.colors.Normalize instance, e. g. PowerNorm(gamma=-2)</div></blockquote>
+<dd><p>The norm instance of the Display</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li>&quot;lin&quot;: linear scale</li>
+<li>&quot;log&quot;: log scale</li>
+<li>any matplotlib.colors.Normalize instance, e. g. PowerNorm(gamma=-2)</li>
+</ul>
 </dd></dl>
 
 <p class="rubric">Methods Documentation</p>
@@ -319,7 +326,7 @@ any matplotlib.colors.Normalize instance, e. g. PowerNorm(gamma=-2)</div></block
 <dt id="ctapipe.visualization.CameraDisplay.add_colorbar">
 <code class="descname">add_colorbar</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.add_colorbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.add_colorbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>add a colobar to the camera plot
-kwargs are passed to figure.colorbar(self.pixels, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs)
+kwargs are passed to <code class="xref py py-obj docutils literal"><span class="pre">figure.colorbar(self.pixels,</span> <span class="pre">**kwargs)</span></code>
 See matplotlib documentation for the supported kwargs:
 <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar">http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar</a></p>
 </dd></dl>
@@ -346,7 +353,7 @@ See matplotlib documentation for the supported kwargs:
 </div></blockquote>
 <p><strong>angle: float</strong></p>
 <blockquote>
-<div><p>rotation angle wrt &#8220;up&#8221; about the centroid, clockwise, in radians</p>
+<div><p>rotation angle wrt &quot;up&quot; about the centroid, clockwise, in radians</p>
 </div></blockquote>
 <p><strong>asymmetry: float</strong></p>
 <blockquote>
@@ -366,6 +373,38 @@ See matplotlib documentation for the supported kwargs:
 <dt id="ctapipe.visualization.CameraDisplay.enable_pixel_picker">
 <code class="descname">enable_pixel_picker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.enable_pixel_picker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.enable_pixel_picker" title="Permalink to this definition">¶</a></dt>
 <dd><p>enable ability to click on pixels</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.highlight_pixels">
+<code class="descname">highlight_pixels</code><span class="sig-paren">(</span><em>pixels</em>, <em>color='g'</em>, <em>linewidth=1</em>, <em>alpha=0.75</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.highlight_pixels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.highlight_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlight the given pixels with a colored line around them</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pixels</strong> : index-like</p>
+<blockquote>
+<div><p>The pixels to highlight.
+Can either be a list or array of integers or a
+boolean mask of length number of pixels</p>
+</div></blockquote>
+<p><strong>color: a matplotlib conform color</strong></p>
+<blockquote>
+<div><p>the color for the pixel highlighting</p>
+</div></blockquote>
+<p><strong>linewidth: float</strong></p>
+<blockquote>
+<div><p>linewidth of the highlighting in points</p>
+</div></blockquote>
+<p><strong>alpha: 0 &lt;= alpha &lt;= 1</strong></p>
+<blockquote class="last">
+<div><p>The transparency</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -389,7 +428,7 @@ when a pixel is clicked</p>
 </div></blockquote>
 <p><strong>kwargs: key=value</strong></p>
 <blockquote class="last">
-<div><p>any style keywords to pass to matplotlib (e.g. color=&#8217;red&#8217;
+<div><p>any style keywords to pass to matplotlib (e.g. color='red'
 or linewidth=6)</p>
 </div></blockquote>
 </td>
@@ -443,7 +482,7 @@ or linewidth=6)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -465,7 +504,7 @@ or linewidth=6)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

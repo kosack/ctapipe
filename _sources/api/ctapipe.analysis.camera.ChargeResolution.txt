@@ -1,0 +1,58 @@
+
+
+ChargeResolution
+========================================
+
+.. currentmodule:: ctapipe.analysis.camera
+
+.. autoclass:: ChargeResolution
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+   
+      ~ChargeResolution.add_charges
+      ~ChargeResolution.add_source
+      ~ChargeResolution.get_binned_charge_resolution
+      ~ChargeResolution.get_charge_resolution
+      ~ChargeResolution.goal
+      ~ChargeResolution.limit_curves
+      ~ChargeResolution.poisson
+      ~ChargeResolution.requirement
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Methods Documentation
+
+   
+   .. automethod:: add_charges
+   .. automethod:: add_source
+   .. automethod:: get_binned_charge_resolution
+   .. automethod:: get_charge_resolution
+   .. automethod:: goal
+   .. automethod:: limit_curves
+   .. automethod:: poisson
+   .. automethod:: requirement
+
+   
+   

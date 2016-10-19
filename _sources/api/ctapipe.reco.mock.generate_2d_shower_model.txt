@@ -1,8 +1,0 @@
-
-
-generate_2d_shower_model
-==========================================
-
-.. currentmodule:: ctapipe.reco.mock
-
-.. autofunction:: generate_2d_shower_model

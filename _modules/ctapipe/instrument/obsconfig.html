@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.instrument.obsconfig &mdash; ctapipe v0.0.dev602</title>
+  <title>ctapipe.instrument.obsconfig &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -83,19 +83,21 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -178,17 +180,18 @@
 
 <div class="viewcode-block" id="get_site_id_for_run"><a class="viewcode-back" href="../../../api/ctapipe.instrument.obsconfig.get_site_id_for_run.html#ctapipe.instrument.obsconfig.get_site_id_for_run">[docs]</a><span class="k">def</span> <span class="nf">get_site_id_for_run</span><span class="p">(</span><span class="n">run_id</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; lookup which array and version was used for a given run &quot;&quot;&quot;</span>
-    
+
     <span class="k">return</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span></div>
 
 <div class="viewcode-block" id="get_site_id_for_time"><a class="viewcode-back" href="../../../api/ctapipe.instrument.obsconfig.get_site_id_for_time.html#ctapipe.instrument.obsconfig.get_site_id_for_time">[docs]</a><span class="k">def</span> <span class="nf">get_site_id_for_time</span><span class="p">(</span><span class="n">obstime</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;lookup which array and version was used for a given obstime</span>
 <span class="sd">    (astropy.time.Time)</span>
 
-<span class="sd">    Example::</span>
-<span class="sd">        aid,aver = get_site_id_for_time( Time(&quot;2015-01-01&quot;, scale=&#39;utc&#39;) ) </span>
+<span class="sd">    :Example:</span>
+
+<span class="sd">    aid, aver = get_site_id_for_time( Time(&quot;2015-01-01&quot;, scale=&#39;utc&#39;) )</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">return</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span></div>
 
 
@@ -204,7 +207,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">site_id</span> <span class="o">=</span> <span class="n">site_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span> <span class="o">=</span> <span class="n">tel_id</span>
-        
+
         <span class="c1"># the following are to be loaded:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version_id</span> <span class="o">=</span><span class="n">version_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixel_type</span> <span class="o">=</span> <span class="s2">&quot;hexagonal&quot;</span>
@@ -228,7 +231,7 @@
     <span class="sd">&quot;&quot;&quot; Contains trigger info for a given run_type &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
-        
+
 <div class="viewcode-block" id="TelescopeConfig"><a class="viewcode-back" href="../../../api/ctapipe.instrument.obsconfig.TelescopeConfig.html#ctapipe.instrument.obsconfig.TelescopeConfig">[docs]</a><span class="k">class</span> <span class="nc">TelescopeConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;Configuration of a single Telescope, including it&#39;s optics and</span>
@@ -248,7 +251,7 @@
 <div class="viewcode-block" id="ArrayConfig"><a class="viewcode-back" href="../../../api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig">[docs]</a><span class="k">class</span> <span class="nc">ArrayConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Overall description of an array (including all telescope that are</span>
 <span class="sd">    built or forseen. This is not a subarray&quot;&quot;&quot;</span>
-    
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_site_id</span> <span class="o">=</span> <span class="n">site_id</span>
@@ -259,7 +262,7 @@
         <span class="n">TelescopeConfigPartial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">TelescopeConfig</span><span class="p">,</span> <span class="n">site_id</span><span class="o">=</span><span class="n">site_id</span><span class="p">,</span>
                                          <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">TelescopeConfigPartial</span><span class="p">)</span>
-        
+
         <span class="c1"># the telescope positions and ids indexed by index (0-N)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_x</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_y</span> <span class="o">=</span> <span class="p">[]</span>
@@ -286,7 +289,7 @@
     <span class="sd">&quot;&quot;&quot;Definition of Telescope Optics, including information on the</span>
 <span class="sd">    overall mirror characteristics and the fascets</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">OpticsConfig</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">site_id</span> <span class="o">=</span> <span class="n">site_id</span>
@@ -329,7 +332,7 @@
         <span class="c1"># trigger type info</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerConfig</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span></div>
 
-        
+
 <div class="viewcode-block" id="SimObsConfig"><a class="viewcode-back" href="../../../api/ctapipe.instrument.obsconfig.SimObsConfig.html#ctapipe.instrument.obsconfig.SimObsConfig">[docs]</a><span class="k">class</span> <span class="nc">SimObsConfig</span><span class="p">(</span><span class="n">ObsConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;ObsConfig from a simulation run.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -348,7 +351,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -370,7 +373,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

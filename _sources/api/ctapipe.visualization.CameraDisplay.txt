@@ -36,6 +36,7 @@ CameraDisplay
       ~CameraDisplay.add_colorbar
       ~CameraDisplay.add_ellipse
       ~CameraDisplay.enable_pixel_picker
+      ~CameraDisplay.highlight_pixels
       ~CameraDisplay.on_pixel_clicked
       ~CameraDisplay.overlay_moments
       ~CameraDisplay.set_limits_minmax
@@ -68,6 +69,7 @@ CameraDisplay
    .. automethod:: add_colorbar
    .. automethod:: add_ellipse
    .. automethod:: enable_pixel_picker
+   .. automethod:: highlight_pixels
    .. automethod:: on_pixel_clicked
    .. automethod:: overlay_moments
    .. automethod:: set_limits_minmax

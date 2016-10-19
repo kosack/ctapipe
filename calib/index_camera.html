@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Camera calibration &mdash; ctapipe v0.0.dev602</title>
+  <title>Camera calibration &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="../index.html"/>
-        <link rel="up" title="Calibration" href="index.html"/>
+    <link rel="top" title="ctapipe v0.1.dev1008" href="../index.html"/>
+        <link rel="up" title="Calibration (calib)" href="index.html"/>
         <link rel="next" title="Pointing calibration" href="index_pointing.html"/>
         <link rel="prev" title="Atmosphere calibration" href="index_atmo.html"/> 
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -85,10 +85,11 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calibration</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#submodules">Submodules</a><ul class="current">
@@ -104,15 +105,16 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -143,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">Calibration</a> &raquo;</li>
+          <li><a href="index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a> &raquo;</li>
       
     <li>Camera calibration</li>
       <li class="wy-breadcrumbs-aside">
@@ -163,10 +165,9 @@
 <span id="calib-camera"></span><h1>Camera calibration<a class="headerlink" href="#camera-calibration" title="Permalink to this headline">¶</a></h1>
 <p>This module contains the functions to calibrate the CTA cameras.</p>
 <p>These functions are divided into the different python modules:</p>
-<ul class="simple">
-<li>MC Camera calibration (<code class="xref py py-obj docutils literal"><span class="pre">mc.py</span></code>)</li>
-</ul>
 <ul>
+<li><p class="first">MC Camera calibration (<code class="xref py py-obj docutils literal"><span class="pre">mc.py</span></code>)</p>
+</li>
 <li><p class="first">Camera prototypes:</p>
 <blockquote>
 <div><ul class="simple">
@@ -188,7 +189,41 @@
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-ctapipe.calib.camera">
 <span id="ctapipe-calib-camera-package"></span><h3>ctapipe.calib.camera Package<a class="headerlink" href="#module-ctapipe.calib.camera" title="Permalink to this headline">¶</a></h3>
-<p>Calibration</p>
+<p>Camera calibration module.</p>
+<div class="section" id="calibrators-py">
+<h4>calibrators.py<a class="headerlink" href="#calibrators-py" title="Permalink to this headline">¶</a></h4>
+<p>This module selects the correct calibrator based on the
+origin of the file. For example, it will use the calibrator in mc.py if the
+file’s origin is hessio. It then calibrates every telescope in that event,
+and stores the pe_charge in the new dl1 container of the event (along with
+some useful information such as the integration window used). Now the returned
+event container contains the original dl0 and mc information
+(actually a reference to the original) and the new dl1 container.</p>
+<p>This module also contains a generator that calibrates the events as you loop
+through this “calibrated_source”. This is useful when you wish to calibrate
+many or all the events, as it stores the geometries into a dict, so they do
+not need to be recalculated, speeding up the process. These functions will
+also only calculate the geometry if the integrator you have specified needs it.</p>
+<p>When calibration is to be added for a specific real-camera source, the correct
+addition to the switch in this module should be made.</p>
+</div>
+<div class="section" id="mc-py">
+<h4>mc.py<a class="headerlink" href="#mc-py" title="Permalink to this headline">¶</a></h4>
+<p>This module handles the common calibration steps required for MC
+files, irregardless of which integration technique is to be used. There
+should be a version of this format of file for each real-camera calibration,
+receiving the same input and returning the same output as this file does, and
+performing similar operations as required (such as pedestal subtraction).</p>
+</div>
+<div class="section" id="integrators-py">
+<h4>integrators.py<a class="headerlink" href="#integrators-py" title="Permalink to this headline">¶</a></h4>
+<p>This module contains the integration techniques, which are common across the
+cameras. The only input into this module are the waveforms and camera
+geometries, ensuring its compatibility with the calibrators for any camera.
+This module avoids duplication of integration code, and allows the sharing of
+better methods. It also makes investigations in the best charge extraction
+techniques a lot easier.</p>
+</div>
 </div>
 </div>
 </div>
@@ -213,7 +248,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -235,7 +270,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

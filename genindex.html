@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; ctapipe v0.0.dev602</title>
+  <title>Index &mdash; ctapipe v0.1.dev1008</title>
   
 
   
@@ -33,7 +33,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev602" href="index.html"/> 
+    <link rel="top" title="ctapipe v0.1.dev1008" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.dev602
+                0.1.dev1008
               </div>
             
           
@@ -83,19 +83,21 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/index.html">Development Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis/index.html">Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calib/index.html">Calibration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coordinates/index.html">Coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core/index.html">Core Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="instrument/index.html">Instrument</a></li>
-<li class="toctree-l1"><a class="reference internal" href="io/index.html">Input/Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reco/index.html">Reconstruction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Command line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">Development Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Command line tools (<code class="docutils literal"><span class="pre">tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/index.html">Analysis (<code class="docutils literal"><span class="pre">analysis</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calib/index.html">Calibration (<code class="docutils literal"><span class="pre">calib</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coordinates/index.html">Coordinates (<code class="docutils literal"><span class="pre">coordinates</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/index.html">Core Structures and Base Classes (<code class="docutils literal"><span class="pre">core</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">Datasets (<code class="docutils literal"><span class="pre">datasets</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flow/index.html">Flow-based framework (<code class="docutils literal"><span class="pre">flow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image/index.html">Imaging (<code class="docutils literal"><span class="pre">image</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrument/index.html">Instrument (<code class="docutils literal"><span class="pre">instrument</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io/index.html">Input/Output (<code class="docutils literal"><span class="pre">io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reco/index.html">Reconstruction (<code class="docutils literal"><span class="pre">reco</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">Utilities (<code class="docutils literal"><span class="pre">utils</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/index.html">Visualization (<code class="docutils literal"><span class="pre">visualization</span></code>)</a></li>
 </ul>
 
             
@@ -151,6 +153,7 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -168,7 +171,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.add">add() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.add_charges">add_charges() (ctapipe.analysis.camera.ChargeResolution method)</a>
   </dt>
 
       
@@ -184,11 +187,15 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame.array_direction">array_direction (ctapipe.coordinates.NominalFrame attribute)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.add_source">add_source() (ctapipe.analysis.camera.ChargeResolution method)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame.array_direction">array_direction (ctapipe.coordinates.NominalFrame attribute)</a>
+  </dt>
+
       
   <dt><a href="api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig">ArrayConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
@@ -213,6 +220,20 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.instrument.obsconfig.BaseConfig.html#ctapipe.instrument.obsconfig.BaseConfig">BaseConfig (class in ctapipe.instrument.obsconfig)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.bin_centers">bin_centers() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.bin_lower_edges">bin_lower_edges (ctapipe.utils.Histogram attribute)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.bins">bins (ctapipe.utils.Histogram attribute)</a>
   </dt>
 
   </dl></td>
@@ -242,23 +263,19 @@
   </dt>
 
       
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution">ChargeResolution (class in ctapipe.analysis.camera)</a>
+  </dt>
+
+      
   <dt><a href="api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.cmap">cmap (ctapipe.visualization.CameraDisplay attribute)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.COMMENT_INDEX">COMMENT_INDEX (ctapipe.configuration.core.Configuration attribute)</a>
+  <dt><a href="api/ctapipe.core.Component.html#ctapipe.core.Component">Component (class in ctapipe.core)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.core.component.html#ctapipe.core.component">component() (in module ctapipe.core)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration">Configuration (class in ctapipe.configuration.core)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.configuration.core.ConfigurationException.html#ctapipe.configuration.core.ConfigurationException">ConfigurationException</a>
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.config_file">config_file (ctapipe.core.Tool attribute)</a>
   </dt>
 
       
@@ -267,6 +284,10 @@
 
       
   <dt><a href="analysis/index.html#module-ctapipe.analysis">ctapipe.analysis (module)</a>
+  </dt>
+
+      
+  <dt><a href="analysis/index.html#module-ctapipe.analysis.camera">ctapipe.analysis.camera (module)</a>
   </dt>
 
       
@@ -288,15 +309,19 @@
   </dt>
 
       
-  <dt><a href="configuration/index.html#module-ctapipe.configuration.core">ctapipe.configuration.core (module)</a>
-  </dt>
-
-      
   <dt><a href="coordinates/index.html#module-ctapipe.coordinates">ctapipe.coordinates (module)</a>
   </dt>
 
       
   <dt><a href="core/index.html#module-ctapipe.core">ctapipe.core (module)</a>
+  </dt>
+
+      
+  <dt><a href="image/index.html#module-ctapipe.image">ctapipe.image (module)</a>
+  </dt>
+
+      
+  <dt><a href="image/index.html#module-ctapipe.image.mock">ctapipe.image.mock (module)</a>
   </dt>
 
       
@@ -320,11 +345,11 @@
   </dt>
 
       
-  <dt><a href="reco/index.html#module-ctapipe.reco.mock">ctapipe.reco.mock (module)</a>
+  <dt><a href="tools/index.html#module-ctapipe.tools">ctapipe.tools (module)</a>
   </dt>
 
       
-  <dt><a href="tools/index.html#module-ctapipe.tools">ctapipe.tools (module)</a>
+  <dt><a href="utils/index.html#module-ctapipe.utils">ctapipe.utils (module)</a>
   </dt>
 
       
@@ -336,16 +361,6 @@
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.DATAIMPL">DATAIMPL (ctapipe.configuration.core.Configuration attribute)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.DEFAULT">DEFAULT (ctapipe.configuration.core.Configuration attribute)</a>
-  </dt>
-
-  </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.coordinates.CameraFrame.html#ctapipe.coordinates.CameraFrame.default_representation">default_representation (ctapipe.coordinates.CameraFrame attribute)</a>
@@ -370,7 +385,17 @@
 
       </dl></dd>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.dynamic_class_from_module">dynamic_class_from_module() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.draw_1d">draw_1d() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.draw_2d">draw_2d() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.utils.dynamic_class_from_module.html#ctapipe.utils.dynamic_class_from_module">dynamic_class_from_module() (in module ctapipe.utils)</a>
   </dt>
 
   </dl></td>
@@ -390,7 +415,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.FITS">FITS (ctapipe.configuration.core.Configuration attribute)</a>
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.fill">fill() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.finish">finish() (ctapipe.core.Tool method)</a>
   </dt>
 
       
@@ -450,6 +479,10 @@
   </dt>
 
       
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.from_fits">from_fits() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+      
   <dt><a href="api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.from_name">from_name() (ctapipe.io.camera.CameraGeometry class method)</a>
   </dt>
 
@@ -460,39 +493,33 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.reco.generate_2d_shower_model.html#ctapipe.reco.generate_2d_shower_model">generate_2d_shower_model() (in module ctapipe.reco)</a>
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="api/ctapipe.reco.mock.generate_2d_shower_model.html#ctapipe.reco.mock.generate_2d_shower_model">(in module ctapipe.reco.mock)</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.get">get() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.image.mock.generate_2d_shower_model.html#ctapipe.image.mock.generate_2d_shower_model">generate_2d_shower_model() (in module ctapipe.image.mock)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.get_comment">get_comment() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.get_binned_charge_resolution">get_binned_charge_resolution() (ctapipe.analysis.camera.ChargeResolution method)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.get_list">get_list() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.get_charge_resolution">get_charge_resolution() (ctapipe.analysis.camera.ChargeResolution method)</a>
   </dt>
 
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.get_section_list">get_section_list() (ctapipe.configuration.core.Configuration method)</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.instrument.obsconfig.get_site_id_for_run.html#ctapipe.instrument.obsconfig.get_site_id_for_run">get_site_id_for_run() (in module ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
   <dt><a href="api/ctapipe.instrument.obsconfig.get_site_id_for_time.html#ctapipe.instrument.obsconfig.get_site_id_for_time">get_site_id_for_time() (in module ctapipe.instrument.obsconfig)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.get_value">get_value() (ctapipe.utils.Histogram method)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.goal">goal() (ctapipe.analysis.camera.ChargeResolution static method)</a>
   </dt>
 
       
@@ -510,25 +537,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.has_key">has_key() (ctapipe.configuration.core.Configuration method)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.HEADERIMPL">HEADERIMPL (ctapipe.configuration.core.Configuration attribute)</a>
-  </dt>
-
-      
   <dt><a href="api/ctapipe.io.hessio.hessio_event_source.html#ctapipe.io.hessio.hessio_event_source">hessio_event_source() (in module ctapipe.io.hessio)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.highlight_pixels">highlight_pixels() (ctapipe.visualization.CameraDisplay method)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.reco.HighOrderMomentParameters.html#ctapipe.reco.HighOrderMomentParameters">HighOrderMomentParameters (class in ctapipe.reco)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters">hillas_parameters() (in module ctapipe.reco)</a>
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram">Histogram (class in ctapipe.utils)</a>
   </dt>
 
   </dl></td>
@@ -545,10 +564,14 @@
   <dt><a href="api/ctapipe.tools.info.html#ctapipe.tools.info">info() (in module ctapipe.tools)</a>
   </dt>
 
+      
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.initialize">initialize() (ctapipe.core.Tool method)</a>
+  </dt>
+
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.INI">INI (ctapipe.configuration.core.Configuration attribute)</a>
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.interpolate">interpolate() (ctapipe.utils.Histogram method)</a>
   </dt>
 
       
@@ -558,11 +581,21 @@
   </dl></td>
 </tr></table>
 
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.utils.json_to_fits.html#ctapipe.utils.json_to_fits">json_to_fits() (in module ctapipe.utils)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.list">list() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.limit_curves">limit_curves() (ctapipe.analysis.camera.ChargeResolution static method)</a>
   </dt>
 
   </dl></td>
@@ -578,15 +611,9 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image">make_mock_shower_image() (in module ctapipe.reco)</a>
+  <dt><a href="api/ctapipe.image.mock.make_mock_shower_image.html#ctapipe.image.mock.make_mock_shower_image">make_mock_shower_image() (in module ctapipe.image.mock)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="api/ctapipe.reco.mock.make_mock_shower_image.html#ctapipe.reco.mock.make_mock_shower_image">(in module ctapipe.reco.mock)</a>
-  </dt>
-
-      </dl></dd>
       
   <dt><a href="api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry">make_rectangular_camera_geometry() (in module ctapipe.io.camera)</a>
   </dt>
@@ -595,22 +622,18 @@
   <dt><a href="api/ctapipe.io.containers.MCCamera.html#ctapipe.io.containers.MCCamera">MCCamera (class in ctapipe.io.containers)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.io.containers.MCEvent.html#ctapipe.io.containers.MCEvent">MCEvent (class in ctapipe.io.containers)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.io.containers.MCShowerData.html#ctapipe.io.containers.MCShowerData">MCShowerData (class in ctapipe.io.containers)</a>
   </dt>
 
       
   <dt><a href="api/ctapipe.core.Container.html#ctapipe.core.Container.meta">meta (ctapipe.core.Container attribute)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.reco.MomentParameters.html#ctapipe.reco.MomentParameters">MomentParameters (class in ctapipe.reco)</a>
   </dt>
 
   </dl></td>
@@ -642,6 +665,10 @@
 
       </dl></dd>
       
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.ndims">ndims (ctapipe.utils.Histogram attribute)</a>
+  </dt>
+
+      
   <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame">NominalFrame (class in ctapipe.coordinates)</a>
   </dt>
 
@@ -669,10 +696,14 @@
   <dt><a href="api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.on_pixel_clicked">on_pixel_clicked() (ctapipe.visualization.CameraDisplay method)</a>
   </dt>
 
+      
+  <dt><a href="api/ctapipe.instrument.obsconfig.OpticsConfig.html#ctapipe.instrument.obsconfig.OpticsConfig">OpticsConfig (class in ctapipe.instrument.obsconfig)</a>
+  </dt>
+
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.instrument.obsconfig.OpticsConfig.html#ctapipe.instrument.obsconfig.OpticsConfig">OpticsConfig (class in ctapipe.instrument.obsconfig)</a>
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.outliers">outliers() (ctapipe.utils.Histogram method)</a>
   </dt>
 
       
@@ -686,19 +717,27 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.parse_args">parse_args() (ctapipe.configuration.core.Configuration method)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame.pointing_direction">pointing_direction (ctapipe.coordinates.NominalFrame attribute)</a>
+  <dt><a href="api/ctapipe.coordinates.GroundFrame.html#ctapipe.coordinates.GroundFrame.pointing_direction">pointing_direction (ctapipe.coordinates.GroundFrame attribute)</a>
   </dt>
 
       <dd><dl>
+        
+  <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame.pointing_direction">(ctapipe.coordinates.NominalFrame attribute)</a>
+  </dt>
+
+        
+  <dt><a href="api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame.pointing_direction">(ctapipe.coordinates.TelescopeFrame attribute)</a>
+  </dt>
+
         
   <dt><a href="api/ctapipe.coordinates.TiltedGroundFrame.html#ctapipe.coordinates.TiltedGroundFrame.pointing_direction">(ctapipe.coordinates.TiltedGroundFrame attribute)</a>
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.poisson">poisson() (ctapipe.analysis.camera.ChargeResolution static method)</a>
+  </dt>
+
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
@@ -712,6 +751,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.ranges">ranges (ctapipe.utils.Histogram attribute)</a>
+  </dt>
+
+      
   <dt><a href="api/ctapipe.io.containers.RawCameraData.html#ctapipe.io.containers.RawCameraData">RawCameraData (class in ctapipe.io.containers)</a>
   </dt>
 
@@ -720,7 +763,7 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.read">read() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.analysis.camera.ChargeResolution.html#ctapipe.analysis.camera.ChargeResolution.requirement">requirement() (ctapipe.analysis.camera.ChargeResolution static method)</a>
   </dt>
 
   </dl></td>
@@ -731,6 +774,16 @@
 
       
   <dt><a href="api/ctapipe.coordinates.NominalFrame.html#ctapipe.coordinates.NominalFrame.rotation">rotation (ctapipe.coordinates.NominalFrame attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame.rotation">(ctapipe.coordinates.TelescopeFrame attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.run">run() (ctapipe.core.Tool method)</a>
   </dt>
 
   </dl></td>
@@ -748,6 +801,10 @@
   </dt>
 
       
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.setup">setup() (ctapipe.core.Tool method)</a>
+  </dt>
+
+      
   <dt><a href="api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.show">show() (ctapipe.visualization.CameraDisplay method)</a>
   </dt>
 
@@ -755,6 +812,10 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.instrument.obsconfig.SimObsConfig.html#ctapipe.instrument.obsconfig.SimObsConfig">SimObsConfig (class in ctapipe.instrument.obsconfig)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.start">start() (ctapipe.core.Tool method)</a>
   </dt>
 
       
@@ -779,14 +840,18 @@
   <dt><a href="api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame">TelescopeFrame (class in ctapipe.coordinates)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.instrument.obsconfig.TelescopeTriggerConfig.html#ctapipe.instrument.obsconfig.TelescopeTriggerConfig">TelescopeTriggerConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
   <dt><a href="api/ctapipe.coordinates.TiltedGroundFrame.html#ctapipe.coordinates.TiltedGroundFrame">TiltedGroundFrame (class in ctapipe.coordinates)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.utils.Histogram.html#ctapipe.utils.Histogram.to_fits">to_fits() (ctapipe.utils.Histogram method)</a>
   </dt>
 
       
@@ -799,6 +864,14 @@
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool">Tool (class in ctapipe.core)</a>
+  </dt>
+
+      
+  <dt><a href="api/ctapipe.utils.traitlets_config_to_fits.html#ctapipe.utils.traitlets_config_to_fits">traitlets_config_to_fits() (in module ctapipe.utils)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -816,13 +889,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.VALUE_INDEX">VALUE_INDEX (ctapipe.configuration.core.Configuration attribute)</a>
+  <dt><a href="api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay.values">values (ctapipe.visualization.ArrayDisplay attribute)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay.values">values (ctapipe.visualization.ArrayDisplay attribute)</a>
+  <dt><a href="api/ctapipe.core.Tool.html#ctapipe.core.Tool.version_string">version_string (ctapipe.core.Tool attribute)</a>
   </dt>
 
   </dl></td>
@@ -832,15 +905,9 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.configuration.core.Configuration.html#ctapipe.configuration.core.Configuration.write">write() (ctapipe.configuration.core.Configuration method)</a>
+  <dt><a href="api/ctapipe.core.Container.html#ctapipe.core.Container.write">write() (ctapipe.core.Container method)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="api/ctapipe.core.Container.html#ctapipe.core.Container.write">(ctapipe.core.Container method)</a>
-  </dt>
-
-      </dl></dd>
   </dl></td>
 </tr></table>
 
@@ -856,7 +923,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, ctapipe developers.
-      Last updated on 22 May 2016.
+      Last updated on 19 Oct 2016.
 
     </p>
   </div>
@@ -878,7 +945,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.dev602',
+            VERSION:'0.1.dev1008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

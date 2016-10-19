@@ -1,0 +1,8 @@
+
+
+make_mock_shower_image
+=========================================
+
+.. currentmodule:: ctapipe.image.mock
+
+.. autofunction:: make_mock_shower_image
