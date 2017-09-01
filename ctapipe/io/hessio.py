@@ -248,18 +248,5 @@ def _fill_instrument_info(data, pyhessio):
                 data.inst.subarray.tels[tel_id] = tel
                 data.inst.subarray.positions[tel_id] = tel_pos
 
-                # deprecated fields that will become part of
-                # TelescopeDescription or SubrrayDescription
-                data.inst.optical_foclen[tel_id] = foclen
-                data.inst.pixel_pos[tel_id] = pix_pos
-                data.inst.tel_pos[tel_id] = tel_pos
-
-                nchans = pyhessio.get_num_channel(tel_id)
-                npix = pyhessio.get_num_pixels(tel_id)
-                data.inst.num_channels[tel_id] = nchans
-                data.inst.num_pixels[tel_id] = npix
-                data.inst.mirror_dish_area[tel_id] = mirror_area
-                data.inst.mirror_numtiles[tel_id] = num_tiles
-
             except HessioGeneralError:
                 pass
