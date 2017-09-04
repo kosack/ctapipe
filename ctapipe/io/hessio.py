@@ -17,10 +17,11 @@ from ..instrument import TelescopeDescription, SubarrayDescription
 logger = logging.getLogger(__name__)
 
 try:
-    from pyhessio import open_hessio
+    from pyhessio import open_hessio, HessioFile
     from pyhessio import HessioError
     from pyhessio import HessioTelescopeIndexError
     from pyhessio import HessioGeneralError
+    import pyhessio
 except ImportError as err:
     logger.fatal(
         "the `pyhessio` python module is required to access MC data: {}"
@@ -110,6 +111,9 @@ def hessio_event_source(url, max_events=None, allowed_tels=None,
 
         for event_id in eventstream:
 
+            if counter == 0:
+                _fill_instrument_info(data, pyhessio)
+
             # Seek to requested event
             if requested_event is not None:
                 current = counter
@@ -167,8 +171,6 @@ def hessio_event_source(url, max_events=None, allowed_tels=None,
             data.dl0.tel.clear()
             data.dl1.tel.clear()
             data.mc.tel.clear()  # clear the previous telescopes
-
-            _fill_instrument_info(data, pyhessio)
 
             for tel_id in data.r0.tels_with_data:
 
@@ -254,3 +256,158 @@ def _fill_instrument_info(data, pyhessio):
 
         except HessioGeneralError:
             pass
+
+
+from abc import ABCMeta, abstractmethod, abstractproperty
+
+class EventSource(metaclass=ABCMeta):
+
+    def __init__(self, url, max_events=None, allowed_tels=None):
+        self.url = url
+        self.max_events = max_events
+        self.allowed_tels = set(allowed_tels) if allowed_tels else None
+        self._current_event = DataContainer()
+        self._counter = 0
+
+        # open the stream
+        self._open_stream(url)
+
+        # fill the subarray info
+
+        # update provenance info
+        Provenance().add_input_file(url, role='dl0.sub.evt')
+
+    @abstractmethod
+    def _open_stream(self, url):
+        pass
+
+    @abstractmethod
+    def _close_stream(self):
+        pass
+
+    @abstractmethod
+    def _fill_event(self, event):
+        return event
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._counter += 1
+        return self._fill_event(self._current_event)
+
+    def seek_to_event_id(self, event_id):
+        pass
+
+    def seek(self, num_events_to_skip):
+        pass
+
+class HESSIOEventSource(EventSource):
+
+    def _open_stream(self, url):
+        self.hessio_file = pyhessio.HessioFile(url)
+        self.hessio_source = hessio_file.move_to_next_event()
+
+    def _close_stream(self):
+        self.hessio_file.close_file()
+
+    def _fill_event(self, event):
+
+        event_id = next(self.hessio_source)  # read next event
+
+        # fill in event data
+        event.event.r0.run_id = pyhessio.get_run_number()
+        event.r0.event_id = event_id
+        event.r0.tels_with_data = set(pyhessio.get_teldata_list())
+        event.r1.run_id = pyhessio.get_run_number()
+        event.r1.event_id = event_id
+        event.r1.tels_with_data = set(pyhessio.get_teldata_list())
+        event.dl0.run_id = pyhessio.get_run_number()
+        event.dl0.event_id = event_id
+        event.dl0.tels_with_data = set(pyhessio.get_teldata_list())
+
+        # handle telescope filtering by taking the intersection of
+        # tels_with_data and allowed_tels
+
+        # if self.allowed_tels is not None:
+        #     selected = event.r0.tels_with_data & self.allowed_tels
+        #     if len(selected) == 0:
+        #         continue  # skip event
+        #     event.r0.tels_with_data = selected
+        #     event.r1.tels_with_data = selected
+        #     event.dl0.tels_with_data = selected
+
+        event.trig.tels_with_trigger \
+            = pyhessio.get_central_event_teltrg_list()
+        time_s, time_ns = pyhessio.get_central_event_gps_time()
+        event.trig.gps_time = Time(time_s * u.s, time_ns * u.ns,
+                                  format='unix', scale='utc')
+        event.mc.energy = pyhessio.get_mc_shower_energy() * u.TeV
+        event.mc.alt = Angle(pyhessio.get_mc_shower_altitude(), u.rad)
+        event.mc.az = Angle(pyhessio.get_mc_shower_azimuth(), u.rad)
+        event.mc.core_x = pyhessio.get_mc_event_xcore() * u.m
+        event.mc.core_y = pyhessio.get_mc_event_ycore() * u.m
+        first_int = pyhessio.get_mc_shower_h_first_int() * u.m
+        event.mc.h_first_int = first_int
+
+        # mc run header data
+        event.mcheader.run_array_direction = \
+            pyhessio.get_mc_run_array_direction()
+
+        event.count = self._counter
+
+        # this should be done in a nicer way to not re-allocate the
+        # data each time (right now it's just deleted and garbage
+        # collected)
+
+        event.r0.tel.clear()
+        event.r1.tel.clear()
+        event.dl0.tel.clear()
+        event.dl1.tel.clear()
+        event.mc.tel.clear()  # clear the previous telescopes
+
+
+        for tel_id in event.r0.tels_with_data:
+
+            # event.mc.tel[tel_id] = MCCameraContainer()
+
+            event.mc.tel[tel_id].dc_to_pe \
+                = pyhessio.get_calibration(tel_id)
+            event.mc.tel[tel_id].pedestal \
+                = pyhessio.get_pedestal(tel_id)
+
+            event.r0.tel[tel_id].adc_samples = \
+                pyhessio.get_adc_sample(tel_id)
+            if event.r0.tel[tel_id].adc_samples.size == 0:
+                # To handle ASTRI and dst files
+                event.r0.tel[tel_id].adc_samples = \
+                    pyhessio.get_adc_sum(tel_id)[..., None]
+            event.r0.tel[tel_id].adc_sums = \
+                pyhessio.get_adc_sum(tel_id)
+            event.mc.tel[tel_id].reference_pulse_shape = \
+                pyhessio.get_ref_shapes(tel_id)
+
+            nsamples = pyhessio.get_event_num_samples(tel_id)
+            if nsamples <= 0:
+                nsamples = 1
+            event.r0.tel[tel_id].num_samples = nsamples
+
+            # load the data per telescope/pixel
+            hessio_mc_npe = pyhessio.get_mc_number_photon_electron
+            event.mc.tel[tel_id].photo_electron_image \
+                = hessio_mc_npe(telescope_id=tel_id)
+            event.mc.tel[tel_id].meta['refstep'] = \
+                pyhessio.get_ref_step(tel_id)
+            event.mc.tel[tel_id].time_slice = \
+                pyhessio.get_time_slice(tel_id)
+            event.mc.tel[tel_id].azimuth_raw = \
+                pyhessio.get_azimuth_raw(tel_id)
+            event.mc.tel[tel_id].altitude_raw = \
+                pyhessio.get_altitude_raw(tel_id)
+            event.mc.tel[tel_id].azimuth_cor = \
+                pyhessio.get_azimuth_cor(tel_id)
+            event.mc.tel[tel_id].altitude_cor = \
+                pyhessio.get_altitude_cor(tel_id)
+        return event
+
+
