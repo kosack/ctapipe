@@ -41,10 +41,12 @@ class TelescopeDescription:
 
     def __init__(self,
                  optics: OpticsDescription,
-                 camera: CameraGeometry):
+                 camera: CameraGeometry,
+                 num_channels: int=2):
 
         self._optics = optics
         self._camera = camera
+        self.num_channels = num_channels
 
     @property
     def optics(self):

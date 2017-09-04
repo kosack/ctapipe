@@ -229,24 +229,28 @@ def _fill_instrument_info(data, pyhessio):
         data container to fill in
 
     """
-    if not data.inst.telescope_ids:
-        data.inst.telescope_ids = list(pyhessio.get_telescope_ids())
-        data.inst.subarray = SubarrayDescription("MonteCarloArray")
 
-        for tel_id in data.inst.telescope_ids:
-            try:
+    telescope_ids = list(pyhessio.get_telescope_ids())
+    data.inst.subarray = SubarrayDescription("MonteCarloArray")
 
-                pix_pos = pyhessio.get_pixel_position(tel_id) * u.m
-                foclen = pyhessio.get_optical_foclen(tel_id) * u.m
-                mirror_area = pyhessio.get_mirror_area(tel_id) * u.m ** 2
-                num_tiles = pyhessio.get_mirror_number(tel_id)
-                tel_pos = pyhessio.get_telescope_position(tel_id) * u.m
+    for tel_id in telescope_ids:
+        try:
 
-                tel = TelescopeDescription.guess(*pix_pos, foclen)
-                tel.optics.mirror_area = mirror_area
-                tel.optics.num_mirror_tiles = num_tiles
-                data.inst.subarray.tels[tel_id] = tel
-                data.inst.subarray.positions[tel_id] = tel_pos
+            pix_pos = pyhessio.get_pixel_position(tel_id) * u.m
+            foclen = pyhessio.get_optical_foclen(tel_id) * u.m
+            mirror_area = pyhessio.get_mirror_area(tel_id) * u.m ** 2
+            num_tiles = pyhessio.get_mirror_number(tel_id)
+            tel_pos = pyhessio.get_telescope_position(tel_id) * u.m
 
-            except HessioGeneralError:
-                pass
+            tel = TelescopeDescription.guess(*pix_pos, foclen)
+            tel.optics.mirror_area = mirror_area
+            tel.optics.num_mirror_tiles = num_tiles
+            data.inst.subarray.tels[tel_id] = tel
+            data.inst.subarray.positions[tel_id] = tel_pos
+
+            nchans = pyhessio.get_num_channel(tel_id)
+            data.inst.subarray.tel[tel_id].num_channels = nchans
+
+
+        except HessioGeneralError:
+            pass

@@ -171,7 +171,7 @@ class CameraDL1Calibrator(Component):
         try:
             shift = self.extractor.window_shift
             width = self.extractor.window_width
-            n_chan = event.inst.num_channels[telid]
+            n_chan = event.inst.subarray.tel[telid].num_channels
             shape = event.mc.tel[telid].reference_pulse_shape
             step = event.mc.tel[telid].meta['refstep']
             time_slice = event.mc.tel[telid].time_slice
@@ -182,7 +182,7 @@ class CameraDL1Calibrator(Component):
             # Don't apply correction when window_shift or window_width
             # does not exist in extractor, or when container does not have
             # a reference pulse shape
-            return np.ones(event.inst.num_channels[telid])
+            return np.ones(event.inst.subarray.tel[telid].num_channels)
 
     def calibrate(self, event):
         """
