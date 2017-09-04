@@ -151,25 +151,6 @@ class CameraDL1Calibrator(Component):
                 self._dl0_empty_warn = True
             return False
 
-    @staticmethod
-    def get_geometry(event, telid):
-        """
-        Obtain the geometry for this telescope.
-
-        Parameters
-        ----------
-        event : container
-            A `ctapipe` event container
-        telid : int
-            The telescope id.
-            The neighbours are calculated once per telescope.
-
-        Returns
-        -------
-        `CameraGeometry`
-        """
-        return CameraGeometry.guess(*event.inst.pixel_pos[telid],
-                                    event.inst.optical_foclen[telid])
 
     def get_correction(self, event, telid):
         """
@@ -231,7 +212,7 @@ class CameraDL1Calibrator(Component):
                     # Extract charge
                     if self.extractor.requires_neighbours():
                         e = self.extractor
-                        g = self.get_geometry(event, telid)
+                        g = event.inst.subarray.tel[telid].camera
                         e.neighbours = g.neighbor_matrix_where
                     extract = self.extractor.extract_charge
                     charge, peakpos, window = extract(cleaned)
