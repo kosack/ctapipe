@@ -206,13 +206,13 @@ def hessio_event_source(url, max_events=None, allowed_tels=None,
                 data.mc.tel[tel_id].time_slice = \
                     pyhessio.get_time_slice(tel_id)
                 data.mc.tel[tel_id].azimuth_raw = \
-                    pyhessio.get_azimuth_raw(tel_id)
+                    Angle(pyhessio.get_azimuth_raw(tel_id), u.rad)
                 data.mc.tel[tel_id].altitude_raw = \
-                    pyhessio.get_altitude_raw(tel_id)
+                    Angle(pyhessio.get_altitude_raw(tel_id), u.rad)
                 data.mc.tel[tel_id].azimuth_cor = \
-                    pyhessio.get_azimuth_cor(tel_id)
+                    Angle(pyhessio.get_azimuth_cor(tel_id), u.rad)
                 data.mc.tel[tel_id].altitude_cor = \
-                    pyhessio.get_altitude_cor(tel_id)
+                    Angle(pyhessio.get_altitude_cor(tel_id), u.rad)
             yield data
             counter += 1
 
@@ -286,15 +286,57 @@ class EventSource(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def _fill_event(self, event):
-        return event
+    def _move_to_next_event(self):
+        """ prepare to read next event """
+        pass
+
+    @abstractmethod
+    def _fill_event_header(self, event):
+        """ fill in any info that is "header" info of the event (not the
+        bulk data), so that we can determine if this event's data should be
+        loaded"""
+        pass
+
+    @abstractmethod
+    def _fill_event_data(self, event):
+        """ fill in data of event (only called if the event passes filtering,
+        for speed) """
+        pass
+
+    def _filter_event(self, event):
+        """ determine if event is useful based on the header information
+        already loaded, and apply any necessary transformations """
+
+        selected_tels = event.r0.tels_with_data & self.allowed_tels
+
+        if len(selected_tels) == 0:
+            return False # skip event with no selected tels
+
+        # modify event with seleciton
+        event.r0.tels_with_data = selected_tels
+        event.r1.tels_with_data = selected_tels
+        event.dl0.tels_with_data = selected_tels
+
+        return True
+
 
     def __iter__(self):
         return self
 
     def __next__(self):
+
+        self._move_to_next_event()
+        self._fill_event_header(self._current_event)
+
+        # skip over events that don't pass filter
+        while self._filter_event(self._current_event) == False:
+            pass
+
         self._counter += 1
-        return self._fill_event(self._current_event)
+        self._fill_event_data(self._current_event)
+
+    def __del__(self):
+        self._close_stream()
 
     def seek_to_event_id(self, event_id):
         pass
@@ -311,9 +353,12 @@ class HESSIOEventSource(EventSource):
     def _close_stream(self):
         self.hessio_file.close_file()
 
-    def _fill_event(self, event):
-
+    def _move_to_next_event(self):
         event_id = next(self.hessio_source)  # read next event
+        return event_id
+
+    def _fill_event_header(self, event):
+
 
         # fill in event data
         event.event.r0.run_id = pyhessio.get_run_number()
@@ -325,17 +370,6 @@ class HESSIOEventSource(EventSource):
         event.dl0.run_id = pyhessio.get_run_number()
         event.dl0.event_id = event_id
         event.dl0.tels_with_data = set(pyhessio.get_teldata_list())
-
-        # handle telescope filtering by taking the intersection of
-        # tels_with_data and allowed_tels
-
-        # if self.allowed_tels is not None:
-        #     selected = event.r0.tels_with_data & self.allowed_tels
-        #     if len(selected) == 0:
-        #         continue  # skip event
-        #     event.r0.tels_with_data = selected
-        #     event.r1.tels_with_data = selected
-        #     event.dl0.tels_with_data = selected
 
         event.trig.tels_with_trigger \
             = pyhessio.get_central_event_teltrg_list()
@@ -366,10 +400,9 @@ class HESSIOEventSource(EventSource):
         event.dl1.tel.clear()
         event.mc.tel.clear()  # clear the previous telescopes
 
+    def _fill_event_data(self, event):
 
         for tel_id in event.r0.tels_with_data:
-
-            # event.mc.tel[tel_id] = MCCameraContainer()
 
             event.mc.tel[tel_id].dc_to_pe \
                 = pyhessio.get_calibration(tel_id)
@@ -401,13 +434,15 @@ class HESSIOEventSource(EventSource):
             event.mc.tel[tel_id].time_slice = \
                 pyhessio.get_time_slice(tel_id)
             event.mc.tel[tel_id].azimuth_raw = \
-                pyhessio.get_azimuth_raw(tel_id)
+                Angle(pyhessio.get_azimuth_raw(tel_id), u.rad)
             event.mc.tel[tel_id].altitude_raw = \
-                pyhessio.get_altitude_raw(tel_id)
+                Angle(pyhessio.get_altitude_raw(tel_id), u.rad)
             event.mc.tel[tel_id].azimuth_cor = \
-                pyhessio.get_azimuth_cor(tel_id)
+                Angle(pyhessio.get_azimuth_cor(tel_id), u.rad)
             event.mc.tel[tel_id].altitude_cor = \
-                pyhessio.get_altitude_cor(tel_id)
+                Angle(pyhessio.get_altitude_cor(tel_id), u.rad)
         return event
+
+
 
 
