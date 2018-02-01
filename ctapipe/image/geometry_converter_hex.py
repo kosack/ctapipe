@@ -441,8 +441,9 @@ def convert_geometry_hex1d_to_rect2d(geom, signal, key=None, add_rot=0):
 
 
 def convert_geometry_rect2d_back_to_hexe1d(geom, signal, key=None, add_rot=None):
-    """reverts the geometry distortion performed by convert_geometry_hexe1d_to_rect_2d
-    back to a hexagonal grid stored in 1D arrays
+    """reverts the geometry distortion performed by
+    convert_geometry_hexe1d_to_rect_2d back to a hexagonal grid stored in 1D
+    arrays
 
     Parameters
     ----------
@@ -463,8 +464,8 @@ def convert_geometry_rect2d_back_to_hexe1d(geom, signal, key=None, add_rot=None)
     signal : ndarray
         1D (no timing) or 2D (with timing) array of the pmt signals
 
-    Note
-    ----
+    Notes
+    -----
     The back-conversion works with an internal buffer to store the transfer map (which
     was produced in the first conversion). If `key` is not found in said buffer, this
     function tries to perform a mock conversion. For this, it needs a `CameraGeometry`
