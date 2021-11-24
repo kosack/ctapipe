@@ -47,6 +47,7 @@ def fileinfo(args):
                     attrs = {
                         name: str(infile.root._v_attrs[name])
                         for name in infile.root._v_attrs._f_list()
+                        if (name.startswith("CTA") or args.all)
                     }
                     if args.flat:
                         info[filename] = attrs.copy()
@@ -93,6 +94,13 @@ def main():
     parser.add_argument(
         "-f", "--flat", action="store_true", help="show flat header hierarchy"
     )
+    parser.add_argument(
+        "-a",
+        "--all",
+        action="store_true",
+        help="show all attributes in the file, rather than only those starting with CTA",
+    )
+
     args = parser.parse_args()
 
     fileinfo(args)
