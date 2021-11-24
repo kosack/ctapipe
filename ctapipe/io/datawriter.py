@@ -7,18 +7,19 @@ Class to write DL1 (a,b) and DL2 (a) data from an event stream
 import pathlib
 from collections import defaultdict
 from typing import DefaultDict, Tuple
-from traitlets import Instance
 
 import numpy as np
 import tables
 from astropy import units as u
+from traitlets import Instance
 
 from ..containers import (
     ArrayEventContainer,
     SimulatedShowerDistribution,
     TelEventIndexContainer,
 )
-from ..core import Component, Container, Field, Provenance, ToolConfigurationError
+from ..core import Component, Container, Field, Provenance
+from ..core.provenance import as_json
 from ..core.traits import Bool, CaselessStrEnum, Float, Int, Path, Unicode
 from ..instrument import SubarrayDescription
 from . import EventSource, HDF5TableWriter, TableWriter
@@ -37,8 +38,9 @@ tables.parameters.NODE_CACHE_SLOTS = 3000  # fixes problem with too many dataset
 #   (meaning readers need to update scripts)
 # - increase the minor number if new columns or datasets are added
 # - increase the patch number if there is a small bugfix to the model.
-DATA_MODEL_VERSION = "v2.1.0"
+DATA_MODEL_VERSION = "v2.1.1"
 DATA_MODEL_CHANGE_HISTORY = """
+- v2.1.1: added configuration to metadata headers
 - v2.1.0: hillas and timing parameters are per default saved in telescope frame (degree) as opposed to camera frame (m)
 - v2.0.0: Match optics and camera tables using indices instead of names
 - v1.2.0: change to more general data model, including also DL2 (DL1 unchanged)
@@ -70,7 +72,7 @@ def write_reference_metadata_headers(
         list of data levels that were requested/generated
         (e.g. from `DataWriter.datalevels`)
     """
-    activity = PROV.current_activity.provenance
+    prov_activity = PROV.current_activity.provenance
     category = "Sim" if is_simulation else "Other"
 
     reference = meta.Reference(
@@ -90,7 +92,7 @@ def write_reference_metadata_headers(
             subtype="",
             id_=",".join(str(x) for x in obs_ids),
         ),
-        activity=meta.Activity.from_provenance(activity),
+        activity=meta.Activity.from_provenance(prov_activity),
         instrument=meta.Instrument(
             site="Other",  # need a way to detect site...
             class_="Subarray",
@@ -101,6 +103,12 @@ def write_reference_metadata_headers(
     )
 
     headers = reference.to_dict()
+
+    # add the Tool configuration :
+
+    activity_name = prov_activity["activity_name"]
+    headers[f"CONTEXT {activity_name}"] = as_json(prov_activity["config"])
+
     meta.write_to_hdf5(headers, writer.h5file)
 
 

@@ -29,7 +29,7 @@ from .support import Singleton
 
 log = logging.getLogger(__name__)
 
-__all__ = ["Provenance"]
+__all__ = ["Provenance", "as_json"]
 
 _interesting_env_vars = [
     "CONDA_DEFAULT_ENV",
@@ -168,19 +168,8 @@ class Provenance(metaclass=Singleton):
         return [x.provenance for x in self._finished_activities]
 
     def as_json(self, **kwargs):
-        """return all finished provenance as JSON.  Kwargs for `json.dumps`
-        may be included, e.g. ``indent=4``"""
-
-        def set_default(obj):
-            """ handle sets (not part of JSON) by converting to list"""
-            if isinstance(obj, set):
-                return list(obj)
-            if isinstance(obj, UserList):
-                return list(obj)
-            if isinstance(obj, Path):
-                return str(obj)
-
-        return json.dumps(self.provenance, default=set_default, **kwargs)
+        """ Return the provenance as JSON string"""
+        return as_json(thedict=self.provenance, **kwargs)
 
     @property
     def active_activity_names(self):
@@ -194,6 +183,23 @@ class Provenance(metaclass=Singleton):
         """ remove all tracked activities """
         self._activities = []
         self._finished_activities = []
+
+
+def as_json(thedict, **kwargs):
+    """Turn a dict into JSON. Kwargs for `json.dumps` may be included, e.g.
+    ``indent=4``.
+    """
+
+    def set_default(obj):
+        """ handle sets (not part of JSON) by converting to list"""
+        if isinstance(obj, set):
+            return list(obj)
+        if isinstance(obj, UserList):
+            return list(obj)
+        if isinstance(obj, Path):
+            return str(obj)
+
+    return json.dumps(thedict, default=set_default, **kwargs)
 
 
 class _ActivityProvenance:
