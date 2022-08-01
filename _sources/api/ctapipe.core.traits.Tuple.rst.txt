@@ -1,0 +1,23 @@
+Tuple
+=====
+
+.. currentmodule:: ctapipe.core.traits
+
+.. autoclass:: Tuple
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~Tuple.class_init
+      ~Tuple.instance_init
+      ~Tuple.item_from_string
+      ~Tuple.validate_elements
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: class_init
+   .. automethod:: instance_init
+   .. automethod:: item_from_string
+   .. automethod:: validate_elements
