@@ -26,6 +26,4 @@ clean:
 .PHONY: all help clean Makefile
 
 html-noplot:
-        $(SPHINXBUILD) -D plot_gallery=0 -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html
-        @echo
-        @echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	$(SPHINXBUILD) -D plot_gallery=0 -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html
